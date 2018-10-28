@@ -1,0 +1,101 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Index.master.cs" Inherits="Torneos_Futbol.Index" %>
+
+<%@ Register Src="~/WebUserControls/ucFooter.ascx" TagPrefix="uc1" TagName="ucFooter" %>
+
+
+<!DOCTYPE html>
+
+<html>
+    <head runat="server">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Torneos de Fútbol</title>
+
+        <asp:ContentPlaceHolder ID="IncludeCssSection" runat="server"></asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+    </head>
+    <body>
+        <form id="frmMaster" runat="server">
+            <div id="wrapper">
+                <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <!--<div class="navbar-header">
+                        <a class="navbar-brand" href="index.html">Torneos de Fútbol</a>
+                    </div>-->
+                    <div class="navbar-default sidebar" role="navigation">
+                        <div class="sidebar-nav navbar-collapse">
+                            <ul class="nav" id="side-menu">
+                                <li class="sidebar-search">
+                                    <div class="text-center">
+                                        <asp:HyperLink runat="server" NavigateUrl="~/Index.aspx">
+                                            <asp:Image ID="imgLogo" runat="server" Width="220px" Height="120px" src="/img/Logo 4.png"/>
+                                        </asp:HyperLink>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-edit fa-fw"></i> Jugador<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <asp:HyperLink runat="server" NavigateUrl="~/Site/RegistrarJugador.aspx">Crear Jugador </asp:HyperLink>
+                                        </li>
+                                        <li>
+                                            <asp:HyperLink runat="server" NavigateUrl="~/Site/ModificarJugador.aspx">Modificar Jugador </asp:HyperLink>
+                                        </li>
+                                        <li>
+                                            <asp:HyperLink runat="server" NavigateUrl="~/Site/EliminarJugador.aspx">Eliminar Jugador </asp:HyperLink>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-edit fa-fw"></i> Equipo<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <asp:HyperLink runat="server" NavigateUrl="~/Site/RegistrarEquipo.aspx">Crear Equipo </asp:HyperLink>
+                                        </li>
+                                        <li>
+                                            <asp:HyperLink runat="server" NavigateUrl="~/Site/ModificarEquipo.aspx">Modificar Equipo </asp:HyperLink>
+                                        </li>
+                                        <li>
+                                            <asp:HyperLink runat="server" NavigateUrl="~/Site/EliminarEquipo.aspx">Eliminar Equipo </asp:HyperLink>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-edit fa-fw"></i> Torneo<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <asp:HyperLink runat="server" NavigateUrl="~/Site/RegistrarTorneo.aspx">Crear Torneo </asp:HyperLink>
+                                        </li>
+                                        <li>
+                                            <asp:HyperLink runat="server" NavigateUrl="~/Site/ModificarTorneo.aspx">Modificar Torneo </asp:HyperLink>
+                                        </li>
+                                        <li>
+                                            <asp:HyperLink runat="server" NavigateUrl="~/Site/EliminarTorneo.aspx">Eliminar Torneo </asp:HyperLink>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <asp:HyperLink runat="server" NavigateUrl="~/Site/ListarEquipos.aspx"><i class="fa fa-dashboard fa-fw"></i> Listado de Equipos </asp:HyperLink>
+                                </li>
+                                 <li>
+                                    <asp:HyperLink runat="server" NavigateUrl="~/Site/FormularioContacto.aspx"><i class="fa fa-dashboard fa-fw"></i> Contacto </asp:HyperLink>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                 <%-- Contenido --%>
+                <asp:ContentPlaceHolder ID="PaginaCentral_ContentPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+                <%-- Contenido --%>
+            </div>
+             <div class="text-center">
+                 <uc1:ucFooter runat="server" ID="ucFooter" />
+            </div>
+        </form>
+        <asp:ContentPlaceHolder ID="includeJsSection" runat="server"></asp:ContentPlaceHolder>
+    </body>
+</html>
