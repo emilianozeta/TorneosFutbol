@@ -26,28 +26,46 @@
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>Nombre</label>
-                                    <asp:textbox id="txtNombre" runat="server" class="form-control" placeholder="Ingrese nombre"></asp:textbox>
+                                    <asp:textbox id="txtNombre" runat="server" class="form-control"></asp:textbox>
                                 </div>
-                                
                                 <div class="form-group">
-                                    <label>Edad</label>
-                                    <asp:textbox id="txtEdad" runat="server" class="form-control" placeholder="Ingrese apellido"></asp:textbox>
-                                    <!--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="La edad es Obligatoria" ControlToValidate="txtEdad" Display="Static" EnableClientScript="true" Enabled="true" CssClass="label label-danger"/>
-					                <asp:CompareValidator ID="CompareValidator1" runat="server" Operator="DataTypeCheck" Type="Integer" ControlToValidate="txtEdad" ErrorMessage="La edad debe ser un número entero" EnableClientScript="True" CssClass="label label-danger"/>
-					                <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="txtEdad" Type="Integer" MinimumValue="15" MaximumValue="99" ErrorMessage="La edad está fuera de rango [15-99]" CssClass="label label-danger"/>-->
+                                    <label>Sexo</label>
+                                    <asp:DropDownList ID="ddlSexo" runat="server" class="form-control"></asp:DropDownList>
                                 </div>
-                                
-                                
-                            </div>
-                            <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label>Apellido</label>
-                                    <asp:textbox id="txtApellido" runat="server" class="form-control" placeholder="Ingrese apellido"></asp:textbox>
+                                    <label>Provincia</label>
+                                    <asp:DropDownList ID="ddlProvincia" runat="server" class="form-control"></asp:DropDownList>
+                                </div>
+                                <div class="form-group">
+                                    <label>Dirección</label>
+                                    <asp:textbox id="txtDireccion" runat="server" class="form-control"></asp:textbox>
                                 </div>
                                 <div class="form-group">
                                     <label>Equipo</label>
                                     <asp:DropDownList ID="ddlEquipo" runat="server" class="form-control"></asp:DropDownList>
                                 </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Apellido</label>
+                                    <asp:textbox id="txtApellido" runat="server" class="form-control"></asp:textbox>
+                                </div>
+                                <div class="form-group">
+                                    <label>Edad</label>
+                                    <asp:textbox id="txtEdad" runat="server" class="form-control"></asp:textbox>
+                                    <!--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="La edad es Obligatoria" ControlToValidate="txtEdad" Display="Static" EnableClientScript="true" Enabled="true" CssClass="label label-danger"/>
+					                <asp:CompareValidator ID="CompareValidator1" runat="server" Operator="DataTypeCheck" Type="Integer" ControlToValidate="txtEdad" ErrorMessage="La edad debe ser un número entero" EnableClientScript="True" CssClass="label label-danger"/>
+					                <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="txtEdad" Type="Integer" MinimumValue="15" MaximumValue="99" ErrorMessage="La edad está fuera de rango [15-99]" CssClass="label label-danger"/>-->
+                                </div>
+                                <div class="form-group">
+                                    <label>Localidad</label>
+                                    <asp:DropDownList ID="ddlLocalidad" runat="server" class="form-control"></asp:DropDownList>
+                                </div>
+                                <div class="form-group">
+                                    <label>E-Mail</label>
+                                    <asp:textbox id="txtMail" runat="server" class="form-control"></asp:textbox>
+                                </div>
+                                
                             </div>
                          </div>
                         <br />
