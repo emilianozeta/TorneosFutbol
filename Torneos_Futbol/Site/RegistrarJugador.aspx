@@ -65,7 +65,10 @@
                                     <label>E-Mail</label>
                                     <asp:textbox id="txtMail" runat="server" class="form-control"></asp:textbox>
                                 </div>
-                                
+                                <div class="form-group">
+                                    <label>Fecha de nacimiento</label>
+                                    <asp:textbox id="txtFecNacimiento" runat="server" class="form-control"></asp:textbox>
+                                </div>
                             </div>
                          </div>
                         <br />

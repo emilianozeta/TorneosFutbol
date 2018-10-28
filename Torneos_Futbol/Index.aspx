@@ -13,8 +13,7 @@
             </div>
         </div>
         <div class="row">
-            <asp:Image ID="Image1" runat="server" Width="100%" Height="100%" src="/img/cancha.png"/>
-            <!--<div class="col-lg-12">
+            <div class="col-lg-12">
                 <br />
                 <br />
                 <br />
@@ -23,12 +22,12 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="text-center">
-                                <asp:Image ID="imgBienvenido" runat="server" Width="100%" Height="100%" src="/img/bienvanido.png"/>
+                                <asp:Image ID="Image1" runat="server" Width="100%" Height="100%" src="/img/cancha.png"/> 
                             </div>
                         </div>
                     </div>  
                 </div>             
-            </div>-->
+            </div>
         </div>
     </div>
 </asp:Content> 

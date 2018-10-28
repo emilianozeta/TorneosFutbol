@@ -293,6 +293,7 @@
     <Content Include="Content\vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\vendor\font-awesome\scss\_variables.scss" />
     <Content Include="img\bienvenidos.png" />
+    <Content Include="img\cancha.png" />
     <Content Include="img\Logo.png" />
     <Content Include="Index.aspx" />
     <Content Include="Index.Master" />
