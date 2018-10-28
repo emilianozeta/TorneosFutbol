@@ -44,7 +44,7 @@
                                 <li class="sidebar-search">
                                     <div class="text-center">
                                         <asp:HyperLink runat="server" NavigateUrl="~/Index.aspx">
-                                            <asp:Image ID="imgLogo" runat="server" Width="220px" Height="110px" src="/img/Logo 4.png"/>
+                                            <asp:Image ID="imgLogo" runat="server" Width="220px" Height="110px" src="/img/Logo.png"/>
                                         </asp:HyperLink>
                                     </div>
                                 </li>
