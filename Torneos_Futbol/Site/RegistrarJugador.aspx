@@ -51,7 +51,7 @@
                             </div>
                          </div>
                         <br />
-                        <asp:Button ID="btnCrearJugador" runat="server" class="btn btn-default" Text="Crear" />
+                        <asp:Button ID="btnCrearJugador" runat="server" class="btn btn-default" Text="Crear" OnClick="btnCrearJugador_Click" />
                     </div>  
                 </div>             
             </div>

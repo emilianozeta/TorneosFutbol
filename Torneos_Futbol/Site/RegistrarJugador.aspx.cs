@@ -10,7 +10,7 @@ namespace Torneos_Futbol.Pages.Administracion
 {
     public partial class RegistrarJugador : System.Web.UI.Page
     {
-        TORNEOS_FUTBOLEntities torneo = new TORNEOS_FUTBOLEntities();
+        TORNEOS_FUTBOLEntities base_futbol = new TORNEOS_FUTBOLEntities();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -18,8 +18,36 @@ namespace Torneos_Futbol.Pages.Administracion
             {
                 ddlEquipo.DataValueField = "ID";
                 ddlEquipo.DataTextField = "Nombre";
-                ddlEquipo.DataSource = torneo.Equipo.ToList();
+                ddlEquipo.DataSource = base_futbol.Equipo.ToList();
                 ddlEquipo.DataBind();
+            }
+        }
+
+        protected void btnCrearJugador_Click(object sender, EventArgs e)
+        {
+            Page.Validate();
+
+            if (Page.IsValid)
+            {
+                try
+                {
+                    Datos.Jugador j = new Datos.Jugador();
+
+                    j.Nombre = txtNombre.Text;
+                    j.Apellido = txtApellido.Text;
+                    j.Edad = Convert.ToInt32(txtEdad.Text);
+                    j.IdEquipo = Convert.ToInt32(ddlEquipo.SelectedValue);
+
+                    base_futbol.Jugador.Add(j);
+                    base_futbol.SaveChanges();
+
+                    //lblJugCreado.Text = "Jugador registrado exitosamente";
+                }
+                catch (Exception ex)
+                {
+                    //lblJugCreado.Text = ex.Message;
+                    //throw;
+                }
             }
         }
     }
