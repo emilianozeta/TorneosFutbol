@@ -12,14 +12,23 @@ namespace Datos
     using System;
     using System.Collections.Generic;
     
-    public partial class Jugador
+    public partial class jugador
     {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public Nullable<int> Edad { get; set; }
-        public int IdEquipo { get; set; }
+        public int id { get; set; }
+        public string nombre { get; set; }
+        public string apellido { get; set; }
+        public string email { get; set; }
+        public System.DateTime fecha_nac { get; set; }
+        public int provincia_id { get; set; }
+        public int localidad_id { get; set; }
+        public string domicilio { get; set; }
+        public int genero_id { get; set; }
+        public int equipo_id { get; set; }
+        public int edad { get; set; }
     
-        public virtual Equipo Equipo { get; set; }
+        public virtual equipo equipo { get; set; }
+        public virtual genero genero { get; set; }
+        public virtual localidad localidad { get; set; }
+        public virtual provincia provincia { get; set; }
     }
 }

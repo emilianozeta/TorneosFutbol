@@ -12,23 +12,21 @@ namespace Datos
     using System;
     using System.Collections.Generic;
     
-    public partial class torneo
+    public partial class provincia
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public torneo()
+        public provincia()
         {
-            this.equipo = new HashSet<equipo>();
+            this.jugador = new HashSet<jugador>();
+            this.torneo = new HashSet<torneo>();
         }
     
         public int id { get; set; }
-        public string nombre { get; set; }
-        public bool flag_activo { get; set; }
-        public int provincia_id { get; set; }
-        public int localidad_id { get; set; }
+        public string descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<equipo> equipo { get; set; }
-        public virtual localidad localidad { get; set; }
-        public virtual provincia provincia { get; set; }
+        public virtual ICollection<jugador> jugador { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<torneo> torneo { get; set; }
     }
 }

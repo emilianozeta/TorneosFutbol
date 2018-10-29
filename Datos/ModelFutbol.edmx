@@ -5,78 +5,202 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="TORNEOS_FUTBOLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Contacto">
+        <EntityType Name="contacto">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NombreCompleto" Type="nvarchar" MaxLength="250" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
-          <Property Name="Comentario" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="comentario" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <EntityType Name="Equipo">
+        <EntityType Name="equipo">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="250" Nullable="false" />
-          <Property Name="MontoAbonado" Type="int" />
-          <Property Name="IdTorneo" Type="int" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="montoabonado" Type="int" />
+          <Property Name="torneo_id" Type="int" />
         </EntityType>
-        <EntityType Name="Jugador">
+        <EntityType Name="genero">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="250" Nullable="false" />
-          <Property Name="Apellido" Type="nvarchar" MaxLength="250" Nullable="false" />
-          <Property Name="Edad" Type="int" />
-          <Property Name="IdEquipo" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <EntityType Name="Torneo">
+        <EntityType Name="jugador">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="250" Nullable="false" />
-          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="apellido" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="fecha_nac" Type="date" Nullable="false" />
+          <Property Name="provincia_id" Type="int" Nullable="false" />
+          <Property Name="localidad_id" Type="int" Nullable="false" />
+          <Property Name="domicilio" Type="nvarchar" MaxLength="200" />
+          <Property Name="genero_id" Type="int" Nullable="false" />
+          <Property Name="equipo_id" Type="int" Nullable="false" />
+          <Property Name="edad" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Equipo_Torneo">
-          <End Role="Torneo" Type="Self.Torneo" Multiplicity="0..1" />
-          <End Role="Equipo" Type="Self.Equipo" Multiplicity="*" />
+        <EntityType Name="localidad">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="provincia_id" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="provincia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="torneo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="flag_activo" Type="bit" Nullable="false" />
+          <Property Name="provincia_id" Type="int" Nullable="false" />
+          <Property Name="localidad_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="usuario" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="contraseña" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_equipo_torneo">
+          <End Role="torneo" Type="Self.torneo" Multiplicity="0..1" />
+          <End Role="equipo" Type="Self.equipo" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Torneo">
-              <PropertyRef Name="Id" />
+            <Principal Role="torneo">
+              <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Equipo">
-              <PropertyRef Name="IdTorneo" />
+            <Dependent Role="equipo">
+              <PropertyRef Name="torneo_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Jugador_Equipo">
-          <End Role="Equipo" Type="Self.Equipo" Multiplicity="1" />
-          <End Role="Jugador" Type="Self.Jugador" Multiplicity="*" />
+        <Association Name="FK_jugador_equipo">
+          <End Role="equipo" Type="Self.equipo" Multiplicity="1" />
+          <End Role="jugador" Type="Self.jugador" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Equipo">
-              <PropertyRef Name="Id" />
+            <Principal Role="equipo">
+              <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Jugador">
-              <PropertyRef Name="IdEquipo" />
+            <Dependent Role="jugador">
+              <PropertyRef Name="equipo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jugador_genero">
+          <End Role="genero" Type="Self.genero" Multiplicity="1" />
+          <End Role="jugador" Type="Self.jugador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genero">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="jugador">
+              <PropertyRef Name="genero_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jugador_localidad">
+          <End Role="localidad" Type="Self.localidad" Multiplicity="1" />
+          <End Role="jugador" Type="Self.jugador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="localidad">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="jugador">
+              <PropertyRef Name="localidad_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jugador_provincia">
+          <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
+          <End Role="jugador" Type="Self.jugador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="jugador">
+              <PropertyRef Name="provincia_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_torneo_localidad">
+          <End Role="localidad" Type="Self.localidad" Multiplicity="1" />
+          <End Role="torneo" Type="Self.torneo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="localidad">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="torneo">
+              <PropertyRef Name="localidad_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_torneo_provincia">
+          <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
+          <End Role="torneo" Type="Self.torneo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="torneo">
+              <PropertyRef Name="provincia_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="TORNEOS_FUTBOLModelStoreContainer">
-          <EntitySet Name="Contacto" EntityType="Self.Contacto" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Equipo" EntityType="Self.Equipo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Jugador" EntityType="Self.Jugador" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Torneo" EntityType="Self.Torneo" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Equipo_Torneo" Association="Self.FK_Equipo_Torneo">
-            <End Role="Torneo" EntitySet="Torneo" />
-            <End Role="Equipo" EntitySet="Equipo" />
+          <EntitySet Name="contacto" EntityType="Self.contacto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="equipo" EntityType="Self.equipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="genero" EntityType="Self.genero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jugador" EntityType="Self.jugador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="localidad" EntityType="Self.localidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="provincia" EntityType="Self.provincia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="torneo" EntityType="Self.torneo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_equipo_torneo" Association="Self.FK_equipo_torneo">
+            <End Role="torneo" EntitySet="torneo" />
+            <End Role="equipo" EntitySet="equipo" />
           </AssociationSet>
-          <AssociationSet Name="FK_Jugador_Equipo" Association="Self.FK_Jugador_Equipo">
-            <End Role="Equipo" EntitySet="Equipo" />
-            <End Role="Jugador" EntitySet="Jugador" />
+          <AssociationSet Name="FK_jugador_equipo" Association="Self.FK_jugador_equipo">
+            <End Role="equipo" EntitySet="equipo" />
+            <End Role="jugador" EntitySet="jugador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jugador_genero" Association="Self.FK_jugador_genero">
+            <End Role="genero" EntitySet="genero" />
+            <End Role="jugador" EntitySet="jugador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jugador_localidad" Association="Self.FK_jugador_localidad">
+            <End Role="localidad" EntitySet="localidad" />
+            <End Role="jugador" EntitySet="jugador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jugador_provincia" Association="Self.FK_jugador_provincia">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="jugador" EntitySet="jugador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_torneo_localidad" Association="Self.FK_torneo_localidad">
+            <End Role="localidad" EntitySet="localidad" />
+            <End Role="torneo" EntitySet="torneo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_torneo_provincia" Association="Self.FK_torneo_provincia">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="torneo" EntitySet="torneo" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -84,82 +208,216 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TORNEOS_FUTBOLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Contacto">
+        <EntityType Name="contacto">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NombreCompleto" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="Equipo">
+        <EntityType Name="equipo">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MontoAbonado" Type="Int32" />
-          <Property Name="IdTorneo" Type="Int32" />
-          <NavigationProperty Name="Torneo" Relationship="Self.FK_Equipo_Torneo" FromRole="Equipo" ToRole="Torneo" />
-          <NavigationProperty Name="Jugador" Relationship="Self.FK_Jugador_Equipo" FromRole="Equipo" ToRole="Jugador" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="montoabonado" Type="Int32" />
+          <Property Name="torneo_id" Type="Int32" />
+          <NavigationProperty Name="torneo" Relationship="Self.FK_equipo_torneo" FromRole="equipo" ToRole="torneo" />
+          <NavigationProperty Name="jugador" Relationship="Self.FK_jugador_equipo" FromRole="equipo" ToRole="jugador" />
         </EntityType>
-        <EntityType Name="Jugador">
+        <EntityType Name="genero">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Apellido" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Edad" Type="Int32" />
-          <Property Name="IdEquipo" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Equipo" Relationship="Self.FK_Jugador_Equipo" FromRole="Jugador" ToRole="Equipo" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="jugador" Relationship="Self.FK_jugador_genero" FromRole="genero" ToRole="jugador" />
         </EntityType>
-        <EntityType Name="Torneo">
+        <EntityType Name="jugador">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Activo" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Equipo" Relationship="Self.FK_Equipo_Torneo" FromRole="Torneo" ToRole="Equipo" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fecha_nac" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="provincia_id" Type="Int32" Nullable="false" />
+          <Property Name="localidad_id" Type="Int32" Nullable="false" />
+          <Property Name="domicilio" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="genero_id" Type="Int32" Nullable="false" />
+          <Property Name="equipo_id" Type="Int32" Nullable="false" />
+          <Property Name="edad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="equipo" Relationship="Self.FK_jugador_equipo" FromRole="jugador" ToRole="equipo" />
+          <NavigationProperty Name="genero" Relationship="Self.FK_jugador_genero" FromRole="jugador" ToRole="genero" />
+          <NavigationProperty Name="localidad" Relationship="Self.FK_jugador_localidad" FromRole="jugador" ToRole="localidad" />
+          <NavigationProperty Name="provincia" Relationship="Self.FK_jugador_provincia" FromRole="jugador" ToRole="provincia" />
         </EntityType>
-        <Association Name="FK_Equipo_Torneo">
-          <End Role="Torneo" Type="Self.Torneo" Multiplicity="0..1" />
-          <End Role="Equipo" Type="Self.Equipo" Multiplicity="*" />
+        <EntityType Name="localidad">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="provincia_id" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="jugador" Relationship="Self.FK_jugador_localidad" FromRole="localidad" ToRole="jugador" />
+          <NavigationProperty Name="torneo" Relationship="Self.FK_torneo_localidad" FromRole="localidad" ToRole="torneo" />
+        </EntityType>
+        <EntityType Name="provincia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="jugador" Relationship="Self.FK_jugador_provincia" FromRole="provincia" ToRole="jugador" />
+          <NavigationProperty Name="torneo" Relationship="Self.FK_torneo_provincia" FromRole="provincia" ToRole="torneo" />
+        </EntityType>
+        <EntityType Name="torneo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="flag_activo" Type="Boolean" Nullable="false" />
+          <Property Name="provincia_id" Type="Int32" Nullable="false" />
+          <Property Name="localidad_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="equipo" Relationship="Self.FK_equipo_torneo" FromRole="torneo" ToRole="equipo" />
+          <NavigationProperty Name="localidad" Relationship="Self.FK_torneo_localidad" FromRole="torneo" ToRole="localidad" />
+          <NavigationProperty Name="provincia" Relationship="Self.FK_torneo_provincia" FromRole="torneo" ToRole="provincia" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="usuario1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="contraseña" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_equipo_torneo">
+          <End Role="torneo" Type="Self.torneo" Multiplicity="0..1" />
+          <End Role="equipo" Type="Self.equipo" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Torneo">
-              <PropertyRef Name="Id" />
+            <Principal Role="torneo">
+              <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Equipo">
-              <PropertyRef Name="IdTorneo" />
+            <Dependent Role="equipo">
+              <PropertyRef Name="torneo_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Jugador_Equipo">
-          <End Role="Equipo" Type="Self.Equipo" Multiplicity="1" />
-          <End Role="Jugador" Type="Self.Jugador" Multiplicity="*" />
+        <Association Name="FK_jugador_equipo">
+          <End Role="equipo" Type="Self.equipo" Multiplicity="1" />
+          <End Role="jugador" Type="Self.jugador" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Equipo">
-              <PropertyRef Name="Id" />
+            <Principal Role="equipo">
+              <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Jugador">
-              <PropertyRef Name="IdEquipo" />
+            <Dependent Role="jugador">
+              <PropertyRef Name="equipo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jugador_genero">
+          <End Role="genero" Type="Self.genero" Multiplicity="1" />
+          <End Role="jugador" Type="Self.jugador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genero">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="jugador">
+              <PropertyRef Name="genero_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jugador_localidad">
+          <End Role="localidad" Type="Self.localidad" Multiplicity="1" />
+          <End Role="jugador" Type="Self.jugador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="localidad">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="jugador">
+              <PropertyRef Name="localidad_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jugador_provincia">
+          <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
+          <End Role="jugador" Type="Self.jugador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="jugador">
+              <PropertyRef Name="provincia_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_torneo_localidad">
+          <End Role="localidad" Type="Self.localidad" Multiplicity="1" />
+          <End Role="torneo" Type="Self.torneo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="localidad">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="torneo">
+              <PropertyRef Name="localidad_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_torneo_provincia">
+          <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
+          <End Role="torneo" Type="Self.torneo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="torneo">
+              <PropertyRef Name="provincia_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="TORNEOS_FUTBOLEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Contacto" EntityType="Self.Contacto" />
-          <EntitySet Name="Equipo" EntityType="Self.Equipo" />
-          <EntitySet Name="Jugador" EntityType="Self.Jugador" />
-          <EntitySet Name="Torneo" EntityType="Self.Torneo" />
-          <AssociationSet Name="FK_Equipo_Torneo" Association="Self.FK_Equipo_Torneo">
-            <End Role="Torneo" EntitySet="Torneo" />
-            <End Role="Equipo" EntitySet="Equipo" />
+          <EntitySet Name="contacto" EntityType="Self.contacto" />
+          <EntitySet Name="equipo" EntityType="Self.equipo" />
+          <EntitySet Name="genero" EntityType="Self.genero" />
+          <EntitySet Name="jugador" EntityType="Self.jugador" />
+          <EntitySet Name="localidad" EntityType="Self.localidad" />
+          <EntitySet Name="provincia" EntityType="Self.provincia" />
+          <EntitySet Name="torneo" EntityType="Self.torneo" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <AssociationSet Name="FK_equipo_torneo" Association="Self.FK_equipo_torneo">
+            <End Role="torneo" EntitySet="torneo" />
+            <End Role="equipo" EntitySet="equipo" />
           </AssociationSet>
-          <AssociationSet Name="FK_Jugador_Equipo" Association="Self.FK_Jugador_Equipo">
-            <End Role="Equipo" EntitySet="Equipo" />
-            <End Role="Jugador" EntitySet="Jugador" />
+          <AssociationSet Name="FK_jugador_equipo" Association="Self.FK_jugador_equipo">
+            <End Role="equipo" EntitySet="equipo" />
+            <End Role="jugador" EntitySet="jugador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jugador_genero" Association="Self.FK_jugador_genero">
+            <End Role="genero" EntitySet="genero" />
+            <End Role="jugador" EntitySet="jugador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jugador_localidad" Association="Self.FK_jugador_localidad">
+            <End Role="localidad" EntitySet="localidad" />
+            <End Role="jugador" EntitySet="jugador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jugador_provincia" Association="Self.FK_jugador_provincia">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="jugador" EntitySet="jugador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_torneo_localidad" Association="Self.FK_torneo_localidad">
+            <End Role="localidad" EntitySet="localidad" />
+            <End Role="torneo" EntitySet="torneo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_torneo_provincia" Association="Self.FK_torneo_provincia">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="torneo" EntitySet="torneo" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -168,43 +426,87 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TORNEOS_FUTBOLModelStoreContainer" CdmEntityContainer="TORNEOS_FUTBOLEntities">
-          <EntitySetMapping Name="Contacto">
-            <EntityTypeMapping TypeName="TORNEOS_FUTBOLModel.Contacto">
-              <MappingFragment StoreEntitySet="Contacto">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+          <EntitySetMapping Name="contacto">
+            <EntityTypeMapping TypeName="TORNEOS_FUTBOLModel.contacto">
+              <MappingFragment StoreEntitySet="contacto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Equipo">
-            <EntityTypeMapping TypeName="TORNEOS_FUTBOLModel.Equipo">
-              <MappingFragment StoreEntitySet="Equipo">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="MontoAbonado" ColumnName="MontoAbonado" />
-                <ScalarProperty Name="IdTorneo" ColumnName="IdTorneo" />
+          <EntitySetMapping Name="equipo">
+            <EntityTypeMapping TypeName="TORNEOS_FUTBOLModel.equipo">
+              <MappingFragment StoreEntitySet="equipo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="montoabonado" ColumnName="montoabonado" />
+                <ScalarProperty Name="torneo_id" ColumnName="torneo_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Jugador">
-            <EntityTypeMapping TypeName="TORNEOS_FUTBOLModel.Jugador">
-              <MappingFragment StoreEntitySet="Jugador">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-                <ScalarProperty Name="Edad" ColumnName="Edad" />
-                <ScalarProperty Name="IdEquipo" ColumnName="IdEquipo" />
+          <EntitySetMapping Name="genero">
+            <EntityTypeMapping TypeName="TORNEOS_FUTBOLModel.genero">
+              <MappingFragment StoreEntitySet="genero">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Torneo">
-            <EntityTypeMapping TypeName="TORNEOS_FUTBOLModel.Torneo">
-              <MappingFragment StoreEntitySet="Torneo">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <EntitySetMapping Name="jugador">
+            <EntityTypeMapping TypeName="TORNEOS_FUTBOLModel.jugador">
+              <MappingFragment StoreEntitySet="jugador">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="fecha_nac" ColumnName="fecha_nac" />
+                <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
+                <ScalarProperty Name="localidad_id" ColumnName="localidad_id" />
+                <ScalarProperty Name="domicilio" ColumnName="domicilio" />
+                <ScalarProperty Name="genero_id" ColumnName="genero_id" />
+                <ScalarProperty Name="equipo_id" ColumnName="equipo_id" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="localidad">
+            <EntityTypeMapping TypeName="TORNEOS_FUTBOLModel.localidad">
+              <MappingFragment StoreEntitySet="localidad">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="provincia">
+            <EntityTypeMapping TypeName="TORNEOS_FUTBOLModel.provincia">
+              <MappingFragment StoreEntitySet="provincia">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="torneo">
+            <EntityTypeMapping TypeName="TORNEOS_FUTBOLModel.torneo">
+              <MappingFragment StoreEntitySet="torneo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="flag_activo" ColumnName="flag_activo" />
+                <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
+                <ScalarProperty Name="localidad_id" ColumnName="localidad_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="TORNEOS_FUTBOLModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="usuario1" ColumnName="usuario" />
+                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -45,7 +45,7 @@
 						            </asp:RadioButtonList>
                                 </div>
                                 <br />
-                                <asp:Button ID="btnCrearTorneo" runat="server" Text="Crear" class="btn btn-default"/>
+                                <asp:Button ID="btnCrearTorneo" runat="server" Text="Crear" class="btn btn-default" OnClick="btnCrearTorneo_Click"/>
 				            </div>
                          </div>
                     </div>  

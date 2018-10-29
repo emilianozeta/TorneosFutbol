@@ -18,7 +18,7 @@ namespace Torneos_Futbol.Pages.Administracion
             {
                 ddlJugador.DataValueField = "ID";
                 ddlJugador.DataTextField = "Nombre";
-                ddlJugador.DataSource = torneo.Jugador.ToList();
+                ddlJugador.DataSource = torneo.jugador.ToList();
                 ddlJugador.DataBind();
             }
         }

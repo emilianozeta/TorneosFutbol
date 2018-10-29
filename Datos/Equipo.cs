@@ -12,21 +12,21 @@ namespace Datos
     using System;
     using System.Collections.Generic;
     
-    public partial class Equipo
+    public partial class equipo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Equipo()
+        public equipo()
         {
-            this.Jugador = new HashSet<Jugador>();
+            this.jugador = new HashSet<jugador>();
         }
     
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public Nullable<int> MontoAbonado { get; set; }
-        public Nullable<int> IdTorneo { get; set; }
+        public int id { get; set; }
+        public string nombre { get; set; }
+        public Nullable<int> montoabonado { get; set; }
+        public Nullable<int> torneo_id { get; set; }
     
-        public virtual Torneo Torneo { get; set; }
+        public virtual torneo torneo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Jugador> Jugador { get; set; }
+        public virtual ICollection<jugador> jugador { get; set; }
     }
 }

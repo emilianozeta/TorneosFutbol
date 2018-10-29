@@ -4,22 +4,39 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Torneos_Futbol.Entidades;
+using Torneos_Futbol.Negocio;
 using Datos;
 
 namespace Torneos_Futbol.Pages.Administracion
 {
     public partial class RegistrarJugador : System.Web.UI.Page
     {
-        TORNEOS_FUTBOLEntities base_futbol = new TORNEOS_FUTBOLEntities();
+        TORNEOS_FUTBOLEntities torneo = new TORNEOS_FUTBOLEntities();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                ddlEquipo.DataValueField = "ID";
-                ddlEquipo.DataTextField = "Nombre";
-                ddlEquipo.DataSource = base_futbol.Equipo.ToList();
+                ddlEquipo.DataValueField = "id";
+                ddlEquipo.DataTextField = "nombre";
+                ddlEquipo.DataSource = torneo.equipo.ToList();
                 ddlEquipo.DataBind();
+                //--------------------------------------------//
+                ddlSexo.DataValueField = "id";
+                ddlSexo.DataValueField = "descripcion";
+                ddlSexo.DataSource = torneo.genero.ToList();
+                ddlSexo.DataBind();
+                //--------------------------------------------//
+                ddlProvincia.DataValueField = "id";
+                ddlProvincia.DataValueField = "descripcion";
+                ddlProvincia.DataSource = torneo.provincia.ToList();
+                ddlProvincia.DataBind();
+                //--------------------------------------------//
+                ddlLocalidad.DataValueField = "id";
+                ddlLocalidad.DataValueField = "descripcion";
+                ddlLocalidad.DataSource = torneo.localidad.ToList();
+                ddlLocalidad.DataBind();
             }
         }
 
@@ -31,20 +48,26 @@ namespace Torneos_Futbol.Pages.Administracion
             {
                 try
                 {
-                    Datos.Jugador j = new Datos.Jugador();
+                    String nombre      = txtNombre.Text;
+                    String apellido    = txtApellido.Text;
+                    String email       = txtMail.Text;
+                    DateTime fecha_nac = DateTime.Parse(txtFecNacimiento.Text);
+                    int provincia      = Convert.ToInt32(ddlProvincia.SelectedIndex); //SelectedValue
+                    int localidad      = Convert.ToInt32(ddlLocalidad.SelectedIndex);
+                    String direccion   = txtDireccion.Text;
+                    int sexo           = Convert.ToInt32(ddlSexo.SelectedIndex);
+                    int equipo         = Convert.ToInt32(ddlEquipo.SelectedIndex);
+                    int edad           = Convert.ToInt32(txtEdad.Text);
 
-                    j.Nombre = txtNombre.Text;
-                    j.Apellido = txtApellido.Text;
-                    j.Edad = Convert.ToInt32(txtEdad.Text);
-                    j.IdEquipo = Convert.ToInt32(ddlEquipo.SelectedValue);
+                    ClassJugador jug = new ClassJugador();
 
-                    base_futbol.Jugador.Add(j);
-                    base_futbol.SaveChanges();
+                    jug.Insertar_Jugador(nombre, apellido, email, fecha_nac, provincia, localidad, direccion, sexo, equipo, edad);
 
                     //lblJugCreado.Text = "Jugador registrado exitosamente";
                 }
                 catch (Exception ex)
                 {
+                    throw new Exception(ex.Message);
                     //lblJugCreado.Text = ex.Message;
                     //throw;
                 }

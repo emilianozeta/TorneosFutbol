@@ -374,6 +374,7 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Negocio\ClassEquipo.cs" />
     <Compile Include="Negocio\ClassJugador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site\EliminarEquipo.aspx.cs">
@@ -477,6 +478,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Funciones_Comunes\" />
     <Folder Include="Site\Temp\" />
   </ItemGroup>
   <ItemGroup>

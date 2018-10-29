@@ -40,7 +40,7 @@
 					                runat="server" ErrorMessage="El monto debe ser numérico" Display="Dynamic" ValidationExpression="(?!^0*$)(?!^0*\.0*$)^\d{1,18}(\.\d{1,2})?$" EnableClientScript="True" CssClass="label label-danger"></asp:RegularExpressionValidator>-->
                                 </div>
 			                    <br />
-		                        <asp:Button ID="btnCrearEquipo" runat="server" Text="Crear" class="btn btn-default"/>
+		                        <asp:Button ID="btnCrearEquipo" runat="server" Text="Crear" class="btn btn-default" OnClick="btnCrearEquipo_Click"/>
                             </div>
                          </div>
                     </div>  

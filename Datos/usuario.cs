@@ -12,11 +12,12 @@ namespace Datos
     using System;
     using System.Collections.Generic;
     
-    public partial class contacto
+    public partial class usuario
     {
         public int id { get; set; }
         public string nombre { get; set; }
-        public string email { get; set; }
-        public string comentario { get; set; }
+        public string apellido { get; set; }
+        public string usuario1 { get; set; }
+        public string contraseña { get; set; }
     }
 }
