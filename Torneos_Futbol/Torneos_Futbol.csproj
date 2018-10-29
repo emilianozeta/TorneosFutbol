@@ -348,6 +348,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Entidades\Jugador.cs" />
+    <Compile Include="Funciones_Comunes\Casteos.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -478,7 +479,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Funciones_Comunes\" />
     <Folder Include="Site\Temp\" />
   </ItemGroup>
   <ItemGroup>

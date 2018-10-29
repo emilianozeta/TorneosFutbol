@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Torneos_Futbol.Entidades;
 using Torneos_Futbol.Negocio;
 using Datos;
+using Torneos_Futbol.Funciones_Comunes;
 
 namespace Torneos_Futbol.Pages.Administracion
 {
@@ -48,16 +49,18 @@ namespace Torneos_Futbol.Pages.Administracion
             {
                 try
                 {
+                    Casteos cast = new Casteos();
+
                     String nombre      = txtNombre.Text;
                     String apellido    = txtApellido.Text;
                     String email       = txtMail.Text;
-                    DateTime fecha_nac = DateTime.Parse(txtFecNacimiento.Text);
-                    int provincia      = Convert.ToInt32(ddlProvincia.SelectedIndex); //SelectedValue
-                    int localidad      = Convert.ToInt32(ddlLocalidad.SelectedIndex);
+                    DateTime fecha_nac = cast.StringToDateTime(txtFecNacimiento.Text);
+                    int provincia      = ddlProvincia.SelectedIndex;
+                    int localidad      = ddlLocalidad.SelectedIndex;
                     String direccion   = txtDireccion.Text;
-                    int sexo           = Convert.ToInt32(ddlSexo.SelectedIndex);
-                    int equipo         = Convert.ToInt32(ddlEquipo.SelectedIndex);
-                    int edad           = Convert.ToInt32(txtEdad.Text);
+                    int sexo           = ddlSexo.SelectedIndex;
+                    int equipo         = ddlEquipo.SelectedIndex;
+                    int edad           = cast.StringToInt(txtEdad.Text);
 
                     ClassJugador jug = new ClassJugador();
 
