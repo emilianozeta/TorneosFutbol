@@ -6,24 +6,37 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Datos;
 using Torneos_Futbol.Negocio;
+using Torneos_Futbol.Funciones_Comunes;
 
 namespace Torneos_Futbol.Pages.Administracion
 {
     public partial class RegistrarEquipo : System.Web.UI.Page
     {
-        TORNEOS_FUTBOLEntities torneo = new TORNEOS_FUTBOLEntities();
+        futbolEntities base_futbol = new futbolEntities();
+        Casteos        cast        = new Casteos();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                ddlTorneo.DataValueField = "id";
-                ddlTorneo.DataTextField = "nombre";
-                ddlTorneo.DataSource = torneo.torneo.ToList();
-
-                ddlTorneo.DataBind();
-                this.ddlTorneo.Items.Insert(0, new ListItem("Seleccione un Torneo...", "0"));  //Agrego opcion 0 porque no es obligatorio
+                CargarTorneo();
             }
+        }
+
+        private void CargarTorneo()
+        {
+            var torn = base_futbol.torneo.ToList();
+            ListItem item;
+
+            ddlTorneo.Items.Insert(0, new ListItem("Seleccione un Torneo...", "0"));
+
+            foreach (torneo t in torn)
+            {
+                item = new ListItem(t.nombre, cast.IntToString(t.id));
+                ddlTorneo.Items.Add(item);
+            }
+
+            ddlTorneo.SelectedIndex = 0;
         }
 
         protected void btnCrearEquipo_Click(object sender, EventArgs e)
@@ -34,22 +47,20 @@ namespace Torneos_Futbol.Pages.Administracion
             {
                 try
                 {
-                    String nombre = txtNombre.Text;
-                    int torneo = Convert.ToInt32(ddlTorneo.SelectedIndex); //SelectedValue
-                    int monto = Convert.ToInt32(txtMonto.Text);
-                   
+                    equipo      eq    = new equipo();
+                    ClassEquipo funEq = new ClassEquipo();
 
-                    ClassEquipo jug = new ClassEquipo();
+                    eq.nombre       = txtNombre.Text;
+                    eq.montoabonado = cast.StringToInt(txtMonto.Text);
+                    eq.torneo_id    = cast.StringToInt(ddlTorneo.SelectedValue);
 
-                    jug.Insertar_Equipo(nombre, torneo, monto);
+                    funEq.Insertar_Equipo(eq);
 
                     //lblJugCreado.Text = "Jugador registrado exitosamente";
                 }
                 catch (Exception ex)
                 {
                     throw new Exception(ex.Message);
-                    //lblJugCreado.Text = ex.Message;
-                    //throw;
                 }
             }
         }

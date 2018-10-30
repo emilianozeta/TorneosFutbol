@@ -22,7 +22,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="text-center">
-                                <asp:Image ID="Image1" runat="server" Width="100%" Height="100%" src="/img/cancha.png"/> 
+                                <asp:Image ID="Image1" runat="server" src="/img/cancha.png"/> 
                             </div>
                         </div>
                     </div>  

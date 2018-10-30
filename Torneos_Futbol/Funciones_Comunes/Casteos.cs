@@ -25,5 +25,10 @@ namespace Torneos_Futbol.Funciones_Comunes
         {
             return DateTime.Parse(fecha);
         }
+
+        public String IntToString(int num)
+        {
+            return num.ToString();
+        }
     }
 }

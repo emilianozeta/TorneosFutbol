@@ -6,15 +6,15 @@ using Datos;
 
 namespace Torneos_Futbol.Negocio
 {
-    public class ClassJugador
+    public class ClassTorneo
     {
         futbolEntities base_futbol = new futbolEntities();
 
-        public void Insertar_Jugador(jugador ju)
+        public void Insertar_Torneo(torneo to)
         {
             try
             {
-                base_futbol.jugador.Add(ju);
+                base_futbol.torneo.Add(to);
                 base_futbol.SaveChanges();
             }
             catch (Exception ex)

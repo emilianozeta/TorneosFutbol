@@ -51,54 +51,54 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="contacto.cs">
-      <DependentUpon>ModelFutbol.tt</DependentUpon>
+      <DependentUpon>ModelFulbol.tt</DependentUpon>
     </Compile>
     <Compile Include="equipo.cs">
-      <DependentUpon>ModelFutbol.tt</DependentUpon>
+      <DependentUpon>ModelFulbol.tt</DependentUpon>
     </Compile>
     <Compile Include="genero.cs">
-      <DependentUpon>ModelFutbol.tt</DependentUpon>
+      <DependentUpon>ModelFulbol.tt</DependentUpon>
     </Compile>
     <Compile Include="jugador.cs">
-      <DependentUpon>ModelFutbol.tt</DependentUpon>
+      <DependentUpon>ModelFulbol.tt</DependentUpon>
     </Compile>
     <Compile Include="localidad.cs">
-      <DependentUpon>ModelFutbol.tt</DependentUpon>
+      <DependentUpon>ModelFulbol.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelFutbol.Context.cs">
+    <Compile Include="ModelFulbol.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelFutbol.Context.tt</DependentUpon>
+      <DependentUpon>ModelFulbol.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelFutbol.cs">
+    <Compile Include="ModelFulbol.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelFutbol.tt</DependentUpon>
+      <DependentUpon>ModelFulbol.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelFutbol.Designer.cs">
+    <Compile Include="ModelFulbol.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelFutbol.edmx</DependentUpon>
+      <DependentUpon>ModelFulbol.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="provincia.cs">
-      <DependentUpon>ModelFutbol.tt</DependentUpon>
+      <DependentUpon>ModelFulbol.tt</DependentUpon>
     </Compile>
     <Compile Include="torneo.cs">
-      <DependentUpon>ModelFutbol.tt</DependentUpon>
+      <DependentUpon>ModelFulbol.tt</DependentUpon>
     </Compile>
     <Compile Include="usuario.cs">
-      <DependentUpon>ModelFutbol.tt</DependentUpon>
+      <DependentUpon>ModelFulbol.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="ModelFutbol.edmx">
+    <EntityDeploy Include="ModelFulbol.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelFutbol.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelFulbol.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ModelFutbol.edmx.diagram">
-      <DependentUpon>ModelFutbol.edmx</DependentUpon>
+    <None Include="ModelFulbol.edmx.diagram">
+      <DependentUpon>ModelFulbol.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -106,15 +106,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ModelFutbol.Context.tt">
+    <Content Include="ModelFulbol.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelFutbol.edmx</DependentUpon>
-      <LastGenOutput>ModelFutbol.Context.cs</LastGenOutput>
+      <DependentUpon>ModelFulbol.edmx</DependentUpon>
+      <LastGenOutput>ModelFulbol.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ModelFutbol.tt">
+    <Content Include="ModelFulbol.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelFutbol.edmx</DependentUpon>
-      <LastGenOutput>ModelFutbol.cs</LastGenOutput>
+      <DependentUpon>ModelFulbol.edmx</DependentUpon>
+      <LastGenOutput>ModelFulbol.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

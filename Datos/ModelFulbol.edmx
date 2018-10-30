@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TORNEOS_FUTBOLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="futbolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="contacto">
           <Key>
             <PropertyRef Name="id" />
@@ -165,7 +165,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TORNEOS_FUTBOLModelStoreContainer">
+        <EntityContainer Name="futbolModelStoreContainer">
           <EntitySet Name="contacto" EntityType="Self.contacto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="equipo" EntityType="Self.equipo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="genero" EntityType="Self.genero" Schema="dbo" store:Type="Tables" />
@@ -203,10 +203,11 @@
             <End Role="torneo" EntitySet="torneo" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="TORNEOS_FUTBOLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="futbolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="contacto">
           <Key>
             <PropertyRef Name="id" />
@@ -381,7 +382,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TORNEOS_FUTBOLEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="futbolEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="contacto" EntityType="Self.contacto" />
           <EntitySet Name="equipo" EntityType="Self.equipo" />
           <EntitySet Name="genero" EntityType="Self.genero" />
@@ -424,9 +425,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TORNEOS_FUTBOLModelStoreContainer" CdmEntityContainer="TORNEOS_FUTBOLEntities">
+        <EntityContainerMapping StorageEntityContainer="futbolModelStoreContainer" CdmEntityContainer="futbolEntities">
           <EntitySetMapping Name="contacto">
-            <EntityTypeMapping TypeName="TORNEOS_FUTBOLModel.contacto">
+            <EntityTypeMapping TypeName="futbolModel.contacto">
               <MappingFragment StoreEntitySet="contacto">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -436,7 +437,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="equipo">
-            <EntityTypeMapping TypeName="TORNEOS_FUTBOLModel.equipo">
+            <EntityTypeMapping TypeName="futbolModel.equipo">
               <MappingFragment StoreEntitySet="equipo">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -446,7 +447,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="genero">
-            <EntityTypeMapping TypeName="TORNEOS_FUTBOLModel.genero">
+            <EntityTypeMapping TypeName="futbolModel.genero">
               <MappingFragment StoreEntitySet="genero">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -454,7 +455,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jugador">
-            <EntityTypeMapping TypeName="TORNEOS_FUTBOLModel.jugador">
+            <EntityTypeMapping TypeName="futbolModel.jugador">
               <MappingFragment StoreEntitySet="jugador">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -471,7 +472,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="localidad">
-            <EntityTypeMapping TypeName="TORNEOS_FUTBOLModel.localidad">
+            <EntityTypeMapping TypeName="futbolModel.localidad">
               <MappingFragment StoreEntitySet="localidad">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
@@ -480,7 +481,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="provincia">
-            <EntityTypeMapping TypeName="TORNEOS_FUTBOLModel.provincia">
+            <EntityTypeMapping TypeName="futbolModel.provincia">
               <MappingFragment StoreEntitySet="provincia">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -488,7 +489,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="torneo">
-            <EntityTypeMapping TypeName="TORNEOS_FUTBOLModel.torneo">
+            <EntityTypeMapping TypeName="futbolModel.torneo">
               <MappingFragment StoreEntitySet="torneo">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -499,7 +500,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="usuario">
-            <EntityTypeMapping TypeName="TORNEOS_FUTBOLModel.usuario">
+            <EntityTypeMapping TypeName="futbolModel.usuario">
               <MappingFragment StoreEntitySet="usuario">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />

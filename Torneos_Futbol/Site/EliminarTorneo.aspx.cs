@@ -10,7 +10,7 @@ namespace Torneos_Futbol.Pages.Administracion
 {
     public partial class EliminarTorneo : System.Web.UI.Page
     {
-        TORNEOS_FUTBOLEntities torneo = new TORNEOS_FUTBOLEntities();
+        futbolEntities torneo = new futbolEntities();
 
         protected void Page_Load(object sender, EventArgs e)
         {

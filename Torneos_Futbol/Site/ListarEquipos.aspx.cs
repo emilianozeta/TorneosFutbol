@@ -10,7 +10,8 @@ namespace Torneos_Futbol.Pages.Equipos
 {
     public partial class ListarEquipos : System.Web.UI.Page
     {
-        TORNEOS_FUTBOLEntities torneo = new TORNEOS_FUTBOLEntities();
+        futbolEntities torneo = new futbolEntities();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -20,8 +21,7 @@ namespace Torneos_Futbol.Pages.Equipos
         {
             string torneoB = txtTorneoB.Text;
             string equipoB = txtEquipoB.Text;
-            bool activos = chkActivos.Checked;
-
+            bool activos   = chkActivos.Checked;
 
             var busqueda = (from eq in torneo.equipo
                             join t in torneo.torneo on
@@ -32,7 +32,6 @@ namespace Torneos_Futbol.Pages.Equipos
 
             dgvListado.DataSource = busqueda;
             dgvListado.DataBind();
-
         }
     }
 }

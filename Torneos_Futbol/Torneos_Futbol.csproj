@@ -292,7 +292,6 @@
     <Content Include="Content\vendor\font-awesome\scss\_spinning.scss" />
     <Content Include="Content\vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\vendor\font-awesome\scss\_variables.scss" />
-    <Content Include="img\bienvenidos.png" />
     <Content Include="img\cancha.png" />
     <Content Include="img\Logo.png" />
     <Content Include="Index.aspx" />
@@ -347,7 +346,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Entidades\Jugador.cs" />
     <Compile Include="Funciones_Comunes\Casteos.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -377,6 +375,7 @@
     </Compile>
     <Compile Include="Negocio\ClassEquipo.cs" />
     <Compile Include="Negocio\ClassJugador.cs" />
+    <Compile Include="Negocio\ClassTorneo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site\EliminarEquipo.aspx.cs">
       <DependentUpon>EliminarEquipo.aspx</DependentUpon>
