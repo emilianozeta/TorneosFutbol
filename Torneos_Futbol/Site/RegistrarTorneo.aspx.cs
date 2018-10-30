@@ -14,15 +14,46 @@ namespace Torneos_Futbol.Pages.Administracion
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ddlProvincia.DataValueField = "id";
-            ddlProvincia.DataValueField = "descripcion";
-            ddlProvincia.DataSource = torneo.provincia.ToList();
-            ddlProvincia.DataBind();
-            //--------------------------------------------//
-            ddlLocalidad.DataValueField = "id";
-            ddlLocalidad.DataValueField = "descripcion";
-            ddlLocalidad.DataSource = torneo.localidad.ToList();
-            ddlLocalidad.DataBind();
+            if (!Page.IsPostBack)
+            {
+                CargarProvincia();
+                CargarLocalidad();
+            }
+            //ddlProvincia.DataValueField = "id";
+            //ddlProvincia.DataValueField = "descripcion";
+            //ddlProvincia.DataSource = torneo.provincia.ToList();
+            //ddlProvincia.DataBind();
+            ////--------------------------------------------//
+            //ddlLocalidad.DataValueField = "id";
+            //ddlLocalidad.DataValueField = "descripcion";
+            //ddlLocalidad.DataSource = torneo.localidad.ToList();
+            //ddlLocalidad.DataBind();
+        }
+
+        private void CargarLocalidad()
+        {
+            var prov = torneo.provincia.ToList();
+            ListItem item;
+                       
+            foreach (provincia p in prov)
+            {
+                item = new ListItem(p.descripcion , p.id.ToString());
+               ddlProvincia.Items.Add(item);
+            }
+            ddlProvincia.SelectedIndex = 0;
+        }
+
+        private void CargarProvincia()
+        {
+            var loc = torneo.localidad.ToList();
+            ListItem item;
+
+            foreach (localidad l in loc)
+            {
+                item = new ListItem(l.descripcion, l.id.ToString());
+                ddlLocalidad.Items.Add(item);
+            }
+            ddlLocalidad.SelectedIndex = 0;
         }
 
         protected void btnCrearTorneo_Click(object sender, EventArgs e)
@@ -54,8 +85,8 @@ namespace Torneos_Futbol.Pages.Administracion
                             throw new Exception("Error desconocido");
                         }
 
-                        t.provincia_id = Convert.ToInt32(ddlProvincia.SelectedIndex); //SelectedValue
-                        t.localidad_id = Convert.ToInt32(ddlLocalidad.SelectedIndex);
+                        t.provincia_id = Convert.ToInt32(ddlProvincia.SelectedValue); //SelectedValue
+                        t.localidad_id = Convert.ToInt32(ddlLocalidad.SelectedValue);
 
                         torneo.torneo.Add(t);
                         torneo.SaveChanges();

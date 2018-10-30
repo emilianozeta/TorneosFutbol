@@ -29,7 +29,7 @@
                                     <asp:TextBox class="form-control" ID="txtEquipoB" runat="server"></asp:TextBox>
                                     <br />
                                     <label>Torneos activos</label>
-			                        <asp:CheckBox ID="CheckBox1" runat="server" />
+			                        <asp:CheckBox ID="chkActivos" runat="server" />
                                 </div>
                             </div>
                             <div class="col-lg-2">
@@ -37,13 +37,14 @@
                                     <label>Nombre Torneo</label>
                                     <asp:TextBox class="form-control" ID="txtTorneoB" runat="server"></asp:TextBox>
                                     <br />
-                                    <asp:Button class="btn btn-outline btn-primary " ID="btnBuscarB" runat="server" Text="Buscar" />
+                                    <asp:Button class="btn btn-outline btn-primary "  OnClick="btnBuscarB_Click" ID="btnBuscarB" runat="server" Text="Buscar" />
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-8">
                                 <div class="form-group">
+                                    <asp:GridView runat="server" ID="dgvListado" CssClass="table table-striped table-bordered table-hover" ></asp:GridView>
                                     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                         <thead>
                                             <tr>
