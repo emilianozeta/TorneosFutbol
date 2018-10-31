@@ -32,7 +32,7 @@
                                     <asp:DropDownList ID="ddlEquipo" runat="server" class="form-control"></asp:DropDownList>
                                 </div>
 			                    <br />
-                                <asp:Button ID="Button2" runat="server" Text="Eliminar" class="btn btn-default" OnClientClick="return confirm('¿Esta seguro que desea eliminar este equipo? Todos sus jugadores serán eliminados también');return false;"/>
+                                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" class="btn btn-default" OnClientClick="return confirm('¿Esta seguro que desea eliminar este equipo? Todos sus jugadores serán eliminados también');return false;" OnClick="btnEliminar_Click"/>
 			                </div>
                          </div>
                     </div>  

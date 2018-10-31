@@ -22,12 +22,12 @@ namespace Torneos_Futbol.Pages.Administracion {
         protected global::System.Web.UI.WebControls.DropDownList ddlTorneo;
         
         /// <summary>
-        /// Control btnBajaTorneo.
+        /// Control btnEliminar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBajaTorneo;
+        protected global::System.Web.UI.WebControls.Button btnEliminar;
     }
 }

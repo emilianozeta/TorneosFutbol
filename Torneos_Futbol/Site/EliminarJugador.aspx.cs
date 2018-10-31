@@ -38,5 +38,29 @@ namespace Torneos_Futbol.Pages.Administracion
 
             ddlJugador.SelectedIndex = 0;
         }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Page.Validate();
+
+            if (Page.IsValid)
+            {
+                if (ddlJugador.SelectedItem.Value != "0")
+                {
+                    int seljugador = funCom.StringToInt(ddlJugador.SelectedItem.Value);
+
+                    var elijugador = (from j in base_futbol.jugador
+                                      where j.id == seljugador
+                                      select j).First();
+
+                    base_futbol.jugador.Remove(elijugador);
+                    base_futbol.SaveChanges();
+
+                    //CargarJugador();
+
+                    //lblJugEliminado.Text = "Se ha eliminado exitosamente el jugador: " + seljugador2;
+                }
+            }
+        }
     }
 }
