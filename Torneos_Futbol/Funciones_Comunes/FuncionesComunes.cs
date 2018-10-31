@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Torneos_Futbol.Funciones_Comunes
 {
-    public class Casteos
+    public class FuncionesComunes
     {
         public int StringToInt(String num)
         {
@@ -29,6 +29,11 @@ namespace Torneos_Futbol.Funciones_Comunes
         public String IntToString(int num)
         {
             return num.ToString();
+        }
+
+        public String ContenarString(String str1, String str2)
+        {
+            return String.Concat(str1, ' ', str2);
         }
     }
 }

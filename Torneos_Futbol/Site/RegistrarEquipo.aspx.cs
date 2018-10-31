@@ -4,16 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Datos;
 using Torneos_Futbol.Negocio;
+using Datos;
 using Torneos_Futbol.Funciones_Comunes;
 
 namespace Torneos_Futbol.Pages.Administracion
 {
     public partial class RegistrarEquipo : System.Web.UI.Page
     {
-        futbolEntities base_futbol = new futbolEntities();
-        Casteos        cast        = new Casteos();
+        futbolEntities   base_futbol = new futbolEntities();
+        FuncionesComunes funCom      = new FuncionesComunes();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,7 +32,7 @@ namespace Torneos_Futbol.Pages.Administracion
 
             foreach (torneo t in torn)
             {
-                item = new ListItem(t.nombre, cast.IntToString(t.id));
+                item = new ListItem(t.nombre, funCom.IntToString(t.id));
                 ddlTorneo.Items.Add(item);
             }
 
@@ -51,8 +51,8 @@ namespace Torneos_Futbol.Pages.Administracion
                     ClassEquipo funEq = new ClassEquipo();
 
                     eq.nombre       = txtNombre.Text;
-                    eq.montoabonado = cast.StringToInt(txtMonto.Text);
-                    eq.torneo_id    = cast.StringToInt(ddlTorneo.SelectedValue);
+                    eq.montoabonado = funCom.StringToInt(txtMonto.Text);
+                    eq.torneo_id    = funCom.StringToInt(ddlTorneo.SelectedValue);
 
                     funEq.Insertar_Equipo(eq);
 

@@ -4,16 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Torneos_Futbol.Negocio;
 using Datos;
 using Torneos_Futbol.Funciones_Comunes;
-using Torneos_Futbol.Negocio;
 
 namespace Torneos_Futbol.Pages.Administracion
 {
     public partial class RegistrarTorneo : System.Web.UI.Page
     {
-        futbolEntities base_futbol = new futbolEntities();
-        Casteos        cast        = new Casteos();
+        futbolEntities   base_futbol = new futbolEntities();
+        FuncionesComunes funCom      = new FuncionesComunes();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,7 +33,7 @@ namespace Torneos_Futbol.Pages.Administracion
 
             foreach (provincia p in prov)
             {
-                item = new ListItem(p.descripcion, cast.IntToString(p.id));
+                item = new ListItem(p.descripcion, funCom.IntToString(p.id));
                 ddlProvincia.Items.Add(item);
             }
 
@@ -49,7 +49,7 @@ namespace Torneos_Futbol.Pages.Administracion
 
             foreach (localidad l in loc)
             {
-                item = new ListItem(l.descripcion, cast.IntToString(l.id));
+                item = new ListItem(l.descripcion, funCom.IntToString(l.id));
                 ddlLocalidad.Items.Add(item);
             }
 
@@ -78,8 +78,8 @@ namespace Torneos_Futbol.Pages.Administracion
                         to.flag_activo = false;
                     }
 
-                    to.provincia_id = cast.StringToInt(ddlProvincia.SelectedValue);
-                    to.localidad_id = cast.StringToInt(ddlLocalidad.SelectedValue);
+                    to.provincia_id = funCom.StringToInt(ddlProvincia.SelectedValue);
+                    to.localidad_id = funCom.StringToInt(ddlLocalidad.SelectedValue);
 
                     funTo.Insertar_Torneo(to);
 

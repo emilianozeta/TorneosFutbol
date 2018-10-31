@@ -13,7 +13,7 @@ namespace Torneos_Futbol.Pages.Administracion
     public partial class RegistrarJugador : System.Web.UI.Page
     {
         futbolEntities base_futbol = new futbolEntities();
-        Casteos        cast        = new Casteos();
+        FuncionesComunes funCom    = new FuncionesComunes();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,7 +35,7 @@ namespace Torneos_Futbol.Pages.Administracion
 
             foreach (equipo e in equi)
             {
-                item = new ListItem(e.nombre, cast.IntToString(e.id));
+                item = new ListItem(e.nombre, funCom.IntToString(e.id));
                 ddlEquipo.Items.Add(item);
             }
 
@@ -51,7 +51,7 @@ namespace Torneos_Futbol.Pages.Administracion
 
             foreach (genero g in gen)
             {
-                item = new ListItem(g.descripcion, cast.IntToString(g.id));
+                item = new ListItem(g.descripcion, funCom.IntToString(g.id));
                 ddlSexo.Items.Add(item);
             }
 
@@ -67,7 +67,7 @@ namespace Torneos_Futbol.Pages.Administracion
 
             foreach (provincia p in prov)
             {
-                item = new ListItem(p.descripcion, cast.IntToString(p.id));
+                item = new ListItem(p.descripcion, funCom.IntToString(p.id));
                 ddlProvincia.Items.Add(item);
             }
 
@@ -83,7 +83,7 @@ namespace Torneos_Futbol.Pages.Administracion
 
             foreach (localidad l in loc)
             {
-                item = new ListItem(l.descripcion, cast.IntToString(l.id));
+                item = new ListItem(l.descripcion, funCom.IntToString(l.id));
                 ddlLocalidad.Items.Add(item);
             }
 
@@ -104,13 +104,13 @@ namespace Torneos_Futbol.Pages.Administracion
                     ju.nombre       = txtNombre.Text;
                     ju.apellido     = txtApellido.Text;
                     ju.email        = txtMail.Text;
-                    ju.fecha_nac    = cast.StringToDateTime(txtFecNacimiento.Text);
-                    ju.provincia_id = cast.StringToInt(ddlProvincia.SelectedValue);
-                    ju.localidad_id = cast.StringToInt(ddlLocalidad.SelectedValue);
+                    ju.fecha_nac    = funCom.StringToDateTime(txtFecNacimiento.Text);
+                    ju.provincia_id = funCom.StringToInt(ddlProvincia.SelectedValue);
+                    ju.localidad_id = funCom.StringToInt(ddlLocalidad.SelectedValue);
                     ju.domicilio    = txtDireccion.Text;
-                    ju.genero_id    = cast.StringToInt(ddlSexo.SelectedValue);
-                    ju.equipo_id    = cast.StringToInt(ddlEquipo.SelectedValue);
-                    ju.edad         = cast.StringToInt(txtEdad.Text);
+                    ju.genero_id    = funCom.StringToInt(ddlSexo.SelectedValue);
+                    ju.equipo_id    = funCom.StringToInt(ddlEquipo.SelectedValue);
+                    ju.edad         = funCom.StringToInt(txtEdad.Text);
 
                     funJug.Insertar_Jugador(ju);
 
