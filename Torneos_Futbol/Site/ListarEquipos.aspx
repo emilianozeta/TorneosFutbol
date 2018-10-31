@@ -45,32 +45,6 @@
                             <div class="col-lg-8">
                                 <div class="form-group">
                                     <asp:GridView runat="server" ID="dgvListado" CssClass="table table-striped table-bordered table-hover" ></asp:GridView>
-                                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                        <thead>
-                                            <tr>
-                                                <th>Equipo</th>
-                                                <th>Torneo en el que participa</th>
-                                                <th>Estado del torneo</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="odd gradeX">
-                                                <td>Trident</td>
-                                                <td>Internet Explorer 4.0</td>
-                                                <td>Win 95+</td>
-                                            </tr>
-                                            <tr class="even gradeC">
-                                                <td>Trident</td>
-                                                <td>Internet Explorer 5.0</td>
-                                                <td>Win 95+</td>
-                                            </tr>
-                                            <tr class="odd gradeA">
-                                                <td>Trident</td>
-                                                <td>Internet Explorer 5.5</td>
-                                                <td>Win 95+</td>
-                                            </tr>
-                                        </tbody>
-                                   </table>
                                 </div>
                             </div>
                         </div>
