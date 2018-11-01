@@ -338,7 +338,6 @@
     <Content Include="Site\RegistrarEquipo.aspx" />
     <Content Include="Site\RegistrarJugador.aspx" />
     <Content Include="Site\RegistrarTorneo.aspx" />
-    <Content Include="Site\VerificacionDatos.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -453,13 +452,6 @@
     </Compile>
     <Compile Include="Site\RegistrarTorneo.aspx.designer.cs">
       <DependentUpon>RegistrarTorneo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Site\VerificacionDatos.aspx.cs">
-      <DependentUpon>VerificacionDatos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Site\VerificacionDatos.aspx.designer.cs">
-      <DependentUpon>VerificacionDatos.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
