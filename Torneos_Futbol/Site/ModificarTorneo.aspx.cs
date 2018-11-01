@@ -63,6 +63,52 @@ namespace Torneos_Futbol.Pages.Administracion
             {
                 radBtnLstEstado.SelectedValue = "False";
             }
+
+
+            CargarProvincia(elitorneo.provincia, elitorneo.localidad);
+         
+
+
+        }
+
+        private void CargarProvincia(provincia provi, localidad lo)
+        {
+            ddlProvincia.Items.Clear();
+            var prov = base_futbol.provincia.ToList();
+            ListItem item;
+
+            ddlProvincia.Items.Insert(0, new ListItem("Seleccione una provincia...", "0"));
+
+            foreach (provincia p in prov)
+            {
+                item = new ListItem(p.descripcion, funCom.IntToString(p.id));
+                ddlProvincia.Items.Add(item);
+                if (p == provi)
+                    item.Selected = true;
+            }
+            CargarLocalidad(lo);
+            //ddlProvincia.SelectedIndex = 0;
+        }
+
+        private void CargarLocalidad(localidad local)
+        {
+            ddlLocalidad.Items.Clear();
+            int id_prov = Convert.ToInt16(ddlProvincia.SelectedValue);
+
+            var loc = (from l in base_futbol.localidad where l.provincia_id == id_prov select l).ToList();
+            ListItem item;
+
+            ddlLocalidad.Items.Insert(0, new ListItem("Seleccione una localidad...", "0"));
+
+            foreach (localidad l in loc)
+            {
+                item = new ListItem(l.descripcion, funCom.IntToString(l.id));
+                ddlLocalidad.Items.Add(item);
+                if (l == local)
+                    item.Selected = true;
+            }
+
+            //ddlLocalidad.SelectedIndex = 0;
         }
 
         protected void btnModificarTorneo_Click(object sender, EventArgs e)
@@ -75,17 +121,30 @@ namespace Torneos_Futbol.Pages.Administracion
                 {
                     int seltorneo = funCom.StringToInt(ddlTorneo.SelectedItem.Value);
 
-                    var a = Convert.ToBoolean(radBtnLstEstado.SelectedValue);
+                    torneo tor;
+                    tor = (from to in base_futbol.torneo where to.id == seltorneo select to).FirstOrDefault();
 
-                    var query = from to in base_futbol.torneo
-                                where to.id == seltorneo
-                                select to;
+                    tor.nombre = txtNombre.Text;
+                    tor.provincia_id = Convert.ToInt32(ddlProvincia.SelectedValue);
+                    tor.localidad_id = Convert.ToInt32(ddlLocalidad.SelectedValue);
+                    if (radBtnLstEstado.SelectedValue == "True")
+                        tor.flag_activo = true;
+                    else
+                        tor.flag_activo = false;
 
-                    foreach (var to in query)
-                        to.nombre = txtNombre.Text;
 
-                    foreach (var to in query)
-                        to.flag_activo = a;
+
+                    //var a = Convert.ToBoolean(radBtnLstEstado.SelectedValue);
+
+                    //var query = from to in base_futbol.torneo
+                    //            where to.id == seltorneo
+                    //            select to;
+
+                    //foreach (var to in query)
+                    //    to.nombre = txtNombre.Text;
+
+                    //foreach (var to in query)
+                    //    to.flag_activo = a;
 
                     base_futbol.SaveChanges();
 
@@ -100,6 +159,21 @@ namespace Torneos_Futbol.Pages.Administracion
                     throw;
                 }
             }
+        }
+
+        protected void ddlProvincia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int seltorneo = funCom.StringToInt(ddlTorneo.SelectedItem.Value);
+            var seltorneo2 = ddlTorneo.SelectedItem.Text;
+
+            divBuscar.Visible = false;
+            divModificar.Visible = true;
+
+            var elitorneo = (from t in base_futbol.torneo
+                             where t.id == seltorneo
+                             select t).First();
+            CargarLocalidad(elitorneo.localidad);
+
         }
     }
 }
