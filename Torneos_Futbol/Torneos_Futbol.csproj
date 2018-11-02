@@ -297,6 +297,7 @@
     <Content Include="Index.aspx" />
     <Content Include="Index.Master" />
     <Content Include="Login.aspx" />
+    <Content Include="ucTorneo.ascx" />
     <Content Include="WebUserControls\ucFooter.ascx" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -460,6 +461,13 @@
     </Compile>
     <Compile Include="Site\VerificacionDatos.aspx.designer.cs">
       <DependentUpon>VerificacionDatos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ucTorneo.ascx.cs">
+      <DependentUpon>ucTorneo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ucTorneo.ascx.designer.cs">
+      <DependentUpon>ucTorneo.ascx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
