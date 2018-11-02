@@ -457,7 +457,6 @@
     </Compile>
     <Compile Include="Site\VerificacionDatos.aspx.cs">
       <DependentUpon>VerificacionDatos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Site\VerificacionDatos.aspx.designer.cs">
       <DependentUpon>VerificacionDatos.aspx</DependentUpon>
