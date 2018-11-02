@@ -6,6 +6,6 @@
         <br />
         Licenciatura en Gestión de la Tecnología - Programación Avanzada II
         <br />
-        Integrantes: Klodi, Silvia - Fernandez, Jonatan - Zambrano, Emiliano - Sobrile, Juan
+        Integrantes: Klodi, Silvia - Fernandez, Jonathan - Zambrano, Emiliano - Sobrile, Juan
     </label>
 </div>
