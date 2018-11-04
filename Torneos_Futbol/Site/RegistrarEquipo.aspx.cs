@@ -26,13 +26,12 @@ namespace Torneos_Futbol.Pages.Administracion
         private void CargarTorneo()
         {
             var torn = base_futbol.torneo.ToList();
-            ListItem item;
 
             ddlTorneo.Items.Insert(0, new ListItem("Seleccione un Torneo...", "0"));
 
             foreach (torneo t in torn)
             {
-                item = new ListItem(t.nombre, funCom.IntToString(t.id));
+                ListItem item = new ListItem(t.nombre, funCom.IntToString(t.id));
                 ddlTorneo.Items.Add(item);
             }
 
@@ -54,7 +53,7 @@ namespace Torneos_Futbol.Pages.Administracion
                     eq.montoabonado = funCom.StringToInt(txtMonto.Text);
                     eq.torneo_id    = funCom.StringToInt(ddlTorneo.SelectedValue);
 
-                    funEq.Insertar_Equipo(eq);
+                    funEq.Insertar_Equipo(base_futbol, eq);
 
                     //lblJugCreado.Text = "Jugador registrado exitosamente";
                 }

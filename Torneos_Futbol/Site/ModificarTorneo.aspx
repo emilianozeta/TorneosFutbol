@@ -1,8 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Index.Master" AutoEventWireup="true" CodeBehind="ModificarTorneo.aspx.cs" Inherits="Torneos_Futbol.Pages.Administracion.ModificarTorneo" %>
-
-<%@ Register Src="~/ucTorneo.ascx" TagPrefix="uc" TagName="ucTorneo" %>
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="IncludeCssSection" runat="server">
 </asp:Content>
 
@@ -36,16 +32,9 @@
                                         <label>Torneo</label>
                                         <asp:DropDownList ID="ddlTorneo" runat="server" class="form-control"></asp:DropDownList>
                                     </div>
-
                                     <asp:Button ID="btnSiguiente" runat="server" Text="Siguiente" class="btn btn-default" OnClick="btnSiguiente_Click"/>
                                 </div>
-                                <br />
-                                <br />
                                 <div id="divModificar" runat="server">
-
-                                    
-                                   <%-- <uc:ucTorneo runat="server" id="ucTorneo" />--%>
-
                                     <div class="form-group">
                                         <label>Nombre</label>
                                         <asp:TextBox ID="txtNombre" runat="server" class="form-control"/>

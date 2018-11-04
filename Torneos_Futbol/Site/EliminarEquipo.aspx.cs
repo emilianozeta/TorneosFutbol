@@ -26,13 +26,12 @@ namespace Torneos_Futbol.Pages.Administracion
         private void CargarEquipo()
         {
             var equi = base_futbol.equipo.ToList();
-            ListItem item;
 
             ddlEquipo.Items.Insert(0, new ListItem("Seleccione un equipo...", "0"));
 
             foreach (equipo e in equi)
             {
-                item = new ListItem(e.nombre, funCom.IntToString(e.id));
+                ListItem item = new ListItem(e.nombre, funCom.IntToString(e.id));
                 ddlEquipo.Items.Add(item);
             }
 
@@ -47,6 +46,9 @@ namespace Torneos_Futbol.Pages.Administracion
             {
                 if (ddlEquipo.SelectedItem.Value != "0")
                 {
+                    ClassEquipo  funEq = new ClassEquipo();
+                    ClassJugador funJu = new ClassJugador();
+
                     int selequipo = funCom.StringToInt(ddlEquipo.SelectedItem.Value);
 
                     var eliequipo = (from eq in base_futbol.equipo
@@ -60,11 +62,10 @@ namespace Torneos_Futbol.Pages.Administracion
 
                     foreach (var ju in query)
                     {
-                        base_futbol.jugador.Remove(ju);
+                        funJu.Eliminar_JugadorEquipo(base_futbol, ju);
                     }
 
-                    base_futbol.equipo.Remove(eliequipo);
-                    base_futbol.SaveChanges();
+                    funEq.Eliminar_Equipo(base_futbol, eliequipo);
 
                     //CargarEquipo();
 

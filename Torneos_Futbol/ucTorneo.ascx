@@ -3,6 +3,7 @@
     <label>Nombre</label>
     <asp:TextBox ID="txtNombre" runat="server" class="form-control" />
 </div>
+
 <div class="form-group">
     <label>Provincia</label>
     <asp:DropDownList ID="ddlProvincia" runat="server" class="form-control" OnSelectedIndexChanged="ddlProvincia_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>

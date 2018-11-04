@@ -8,14 +8,49 @@ namespace Torneos_Futbol.Negocio
 {
     public class ClassJugador
     {
-        futbolEntities base_futbol = new futbolEntities();
-
-        public void Insertar_Jugador(jugador ju)
+        public void Insertar_Jugador(futbolEntities ctx, jugador ju)
         {
             try
             {
-                base_futbol.jugador.Add(ju);
-                base_futbol.SaveChanges();
+                ctx.jugador.Add(ju);
+                ctx.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void Actualizar_Jugador(futbolEntities ctx)
+        {
+            try
+            {
+                ctx.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void Eliminar_JugadorEquipo(futbolEntities ctx, jugador ju)
+        {
+            try
+            {
+                ctx.jugador.Remove(ju);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void Eliminar_Jugador(futbolEntities ctx, jugador ju)
+        {
+            try
+            {
+                ctx.jugador.Remove(ju);
+                ctx.SaveChanges();
             }
             catch (Exception ex)
             {

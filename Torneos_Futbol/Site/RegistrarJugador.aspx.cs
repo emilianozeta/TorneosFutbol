@@ -12,12 +12,12 @@ namespace Torneos_Futbol.Pages.Administracion
 {
     public partial class RegistrarJugador : System.Web.UI.Page
     {
-        futbolEntities base_futbol = new futbolEntities();
-        FuncionesComunes funCom    = new FuncionesComunes();
+        futbolEntities   base_futbol = new futbolEntities();
+        FuncionesComunes funCom      = new FuncionesComunes();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (!Page.IsPostBack)
             {
                 CargarEquipo();
                 CargarGenero();
@@ -112,7 +112,7 @@ namespace Torneos_Futbol.Pages.Administracion
                     ju.equipo_id    = funCom.StringToInt(ddlEquipo.SelectedValue);
                     ju.edad         = funCom.StringToInt(txtEdad.Text);
 
-                    funJug.Insertar_Jugador(ju);
+                    funJug.Insertar_Jugador(base_futbol, ju);
 
                     //lblJugCreado.Text = "Jugador registrado exitosamente";
                 }

@@ -47,6 +47,9 @@ namespace Torneos_Futbol.Pages.Administracion
             {
                 if (ddlTorneo.SelectedItem.Value != "0")
                 {
+                    ClassEquipo funEqui = new ClassEquipo();
+                    ClassTorneo funTorn = new ClassTorneo();
+
                     int seltorneo = funCom.StringToInt(ddlTorneo.SelectedItem.Value);
 
                     var elitorneo = (from t in base_futbol.torneo
@@ -61,11 +64,10 @@ namespace Torneos_Futbol.Pages.Administracion
                     foreach (var eq in query)
                         eq.torneo_id = null;
 
-                    base_futbol.SaveChanges();
+                    funEqui.Actualizar_Equipo(base_futbol);
 
                     //Elimino el torneo seleccionado
-                    base_futbol.torneo.Remove(elitorneo);
-                    base_futbol.SaveChanges();
+                    funTorn.Eliminar_Torneo(base_futbol, elitorneo);
 
                     //CargarTorneo();
 

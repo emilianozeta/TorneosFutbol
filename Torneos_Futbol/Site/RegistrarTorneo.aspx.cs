@@ -81,7 +81,7 @@ namespace Torneos_Futbol.Pages.Administracion
                     to.provincia_id = funCom.StringToInt(ddlProvincia.SelectedValue);
                     to.localidad_id = funCom.StringToInt(ddlLocalidad.SelectedValue);
 
-                    funTo.Insertar_Torneo(to);
+                    funTo.Insertar_Torneo(base_futbol, to);
 
                     //lblTorCreado.Text = "Torneo registrado exitosamente";
                 }

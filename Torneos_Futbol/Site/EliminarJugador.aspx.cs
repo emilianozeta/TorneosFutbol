@@ -26,13 +26,12 @@ namespace Torneos_Futbol.Pages.Administracion
         private void CargarJugador()
         {
             var jug = base_futbol.jugador.ToList();
-            ListItem item;
 
             ddlJugador.Items.Insert(0, new ListItem("Seleccione un jugador...", "0"));
 
             foreach (jugador j in jug)
             {
-                item = new ListItem(funCom.ContenarString(j.nombre,j.apellido), funCom.IntToString(j.id));
+                ListItem item = new ListItem(funCom.ContenarString(j.nombre,j.apellido), funCom.IntToString(j.id));
                 ddlJugador.Items.Add(item);
             }
 
@@ -47,14 +46,15 @@ namespace Torneos_Futbol.Pages.Administracion
             {
                 if (ddlJugador.SelectedItem.Value != "0")
                 {
+                    ClassJugador funJu = new ClassJugador();
+
                     int seljugador = funCom.StringToInt(ddlJugador.SelectedItem.Value);
 
                     var elijugador = (from j in base_futbol.jugador
                                       where j.id == seljugador
                                       select j).First();
 
-                    base_futbol.jugador.Remove(elijugador);
-                    base_futbol.SaveChanges();
+                    funJu.Eliminar_Jugador(base_futbol, elijugador);
 
                     //CargarJugador();
 

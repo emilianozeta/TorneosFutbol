@@ -13,6 +13,15 @@ namespace Torneos_Futbol.Pages.Administracion {
     public partial class ModificarEquipo {
         
         /// <summary>
+        /// Control divBuscar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divBuscar;
+        
+        /// <summary>
         /// Control ddlEquipo.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace Torneos_Futbol.Pages.Administracion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSiguiente;
+        
+        /// <summary>
+        /// Control divModificar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divModificar;
         
         /// <summary>
         /// Control txtNombre.
