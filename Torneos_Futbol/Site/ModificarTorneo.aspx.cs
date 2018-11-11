@@ -34,7 +34,7 @@ namespace Torneos_Futbol.Pages.Administracion
         {
             var torn = funTorn.Recuperar_Torneo_Completo(base_futbol);
 
-            ddlTorneo.Items.Insert(0, new ListItem("Seleccione un Torneo...", "0"));
+            //ddlTorneo.Items.Insert(0, new ListItem("Seleccione un Torneo...", "0"));
 
             foreach (torneo t in torn)
             {

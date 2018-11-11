@@ -38,7 +38,7 @@
                                     <div class="form-group">
                                         <asp:CompareValidator ID="cvJugador" ControlToValidate="ddlJugador" runat="server" ValueToCompare="0" Operator="NotEqual" Display ="Dynamic" ErrorMessage="Debe seleccionar un jugador" CssClass="label label-danger"></asp:CompareValidator>
                                     </div>
-                                    <asp:Button ID="btnSiguiente" runat="server" Text="Siguiente" class="btn btn-default" OnClick="btnSiguiente_Click"/>
+                                    <asp:Button ID="btnSiguiente" runat="server" CausesValidation="false" Text="Siguiente" class="btn btn-default" OnClick="btnSiguiente_Click"/>
                                 </div>
                             </div>
                             <div class="col-lg-12">

@@ -35,7 +35,7 @@
                                     <div class="form-group">
                                         <asp:CompareValidator ID="cvEquipo" ControlToValidate="ddlEquipo" runat="server" ValueToCompare="0" Operator="NotEqual" Display ="Dynamic" ErrorMessage="Debe seleccionar un equipo" CssClass="label label-danger"></asp:CompareValidator>
                                     </div>
-                                    <asp:Button ID="btnSiguiente" runat="server" Text="Siguiente" class="btn btn-default" OnClick="btnSiguiente_Click"/>
+                                    <asp:Button ID="btnSiguiente" runat="server" CausesValidation="false" Text="Siguiente" class="btn btn-default" OnClick="btnSiguiente_Click"/>
                                 </div>
                                 <div id="divModificar" runat="server">
 				                    <div class="form-group">

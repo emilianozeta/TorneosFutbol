@@ -35,7 +35,7 @@ namespace Torneos_Futbol.Pages.Administracion
         {
             var equi = funEquip.Recuperar_Equipo_Completo(base_futbol);
 
-            ddlEquipo.Items.Insert(0, new ListItem("Seleccione un equipo...", "0"));
+            //ddlEquipo.Items.Insert(0, new ListItem("Seleccione un equipo...", "0"));
 
             foreach (equipo e in equi)
             {

@@ -35,7 +35,7 @@ namespace Torneos_Futbol.Pages.Administracion
         {
             var jug = funJug.Recuperar_Jugador_Completo(base_futbol);
 
-            ddlJugador.Items.Insert(0, new ListItem("Seleccione un Jugador...", "0"));
+            //ddlJugador.Items.Insert(0, new ListItem("Seleccione un Jugador...", "0"));
 
             foreach (jugador j in jug)
             {
