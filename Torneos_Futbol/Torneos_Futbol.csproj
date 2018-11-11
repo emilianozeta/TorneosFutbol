@@ -297,6 +297,7 @@
     <Content Include="Index.aspx" />
     <Content Include="Index.Master" />
     <Content Include="Login.aspx" />
+    <Content Include="LogOut.aspx" />
     <Content Include="WebUserControls\ucProvLoc.ascx" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -371,6 +372,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LogOut.aspx.cs">
+      <DependentUpon>LogOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogOut.aspx.designer.cs">
+      <DependentUpon>LogOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="Negocio\ClassEquipo.cs" />
     <Compile Include="Negocio\ClassJugador.cs" />

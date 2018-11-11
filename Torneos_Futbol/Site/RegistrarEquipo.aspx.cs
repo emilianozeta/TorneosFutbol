@@ -56,7 +56,7 @@ namespace Torneos_Futbol.Pages.Administracion
 
                     funEqui.Insertar_Equipo(base_futbol, eq);
 
-                    //lblJugCreado.Text = "Jugador registrado exitosamente";
+                    this.Page.Response.Write("<script language='JavaScript'>window.alert('Equipo registrado exitosamente');window.location.href = './RegistrarEquipo.aspx';</script>");
                 }
                 catch (Exception ex)
                 {

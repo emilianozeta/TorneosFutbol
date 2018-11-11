@@ -117,7 +117,7 @@ namespace Torneos_Futbol.Pages.Administracion
                     divBuscar.Visible    = false;
                     divModificar.Visible = true;
 
-                    //lblTorModificado.Text = "Torneo modificado exitosamente";
+                    this.Page.Response.Write("<script language='JavaScript'>window.alert('Jugador modificado exitosamente');window.location.href = './ModificarJugador.aspx';</script>");
                 }
                 catch (Exception ex)
                 {

@@ -67,7 +67,7 @@ namespace Torneos_Futbol.Pages.Administracion
 
                     CargarTorneo();
 
-                    //lblTorEliminado.Text = "Se ha eliminado exitosamente el torneo: " + seltorneo2;
+                    this.Page.Response.Write("<script language='JavaScript'>window.alert('Se ha eliminado exitosamente el torneo');window.location.href = './EliminarTorneo.aspx';</script>");
                 }
             }
         }

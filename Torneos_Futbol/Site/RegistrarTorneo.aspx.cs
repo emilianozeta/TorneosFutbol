@@ -47,7 +47,7 @@ namespace Torneos_Futbol.Pages.Administracion
 
                     funTorn.Insertar_Torneo(base_futbol, tor);
 
-                    //lblTorCreado.Text = "Torneo registrado exitosamente";
+                    this.Page.Response.Write("<script language='JavaScript'>window.alert('Torneo registrado exitosamente');window.location.href = './RegistrarTorneo.aspx';</script>");
                 }
                 catch (Exception ex)
                 {

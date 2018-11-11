@@ -79,7 +79,7 @@ namespace Torneos_Futbol.Pages.Administracion
 
                     funJug.Insertar_Jugador(base_futbol, ju);
 
-                    //lblJugCreado.Text = "Jugador registrado exitosamente";
+                    this.Page.Response.Write("<script language='JavaScript'>window.alert('Jugador registrado exitosamente');window.location.href = './RegistrarJugador.aspx';</script>");
                 }
                 catch (Exception ex)
                 {

@@ -66,7 +66,7 @@ namespace Torneos_Futbol.Pages.Administracion
 
                     CargarEquipo();
 
-                    //lblJugEliminado.Text = "Se ha eliminado exitosamente el jugador: " + seljugador2;
+                    this.Page.Response.Write("<script language='JavaScript'>window.alert('Se ha eliminado exitosamente el equipo');window.location.href = './EliminarEquipo.aspx';</script>");
                 }
             }
         }

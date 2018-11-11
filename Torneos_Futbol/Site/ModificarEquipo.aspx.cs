@@ -88,7 +88,7 @@ namespace Torneos_Futbol.Pages.Administracion
                     divBuscar.Visible    = false;
                     divModificar.Visible = true;
 
-                    //lblEquModificado.Text = "Equipo modificado exitosamente";*/
+                    this.Page.Response.Write("<script language='JavaScript'>window.alert('Equipo modificado exitosamente');window.location.href = './ModificarEquipo.aspx';</script>");
                 }
                 catch (Exception ex)
                 {

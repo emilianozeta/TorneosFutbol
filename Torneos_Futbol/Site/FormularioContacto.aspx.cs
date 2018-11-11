@@ -37,7 +37,7 @@ namespace Torneos_Futbol.Pages.Equipos
                     base_futbol.contacto.Add(co);
                     base_futbol.SaveChanges();
 
-                    //Response.Redirect("~/MasterEquipos/contacto-resultado.aspx");
+                    this.Page.Response.Write("<script language='JavaScript'>window.alert('Nuestro personal se pondrá en contacto con usted a la mayor brevedad posible');window.location.href = './FormularioContacto.aspx';</script>");
                 }
                 catch (Exception ex)
                 {
