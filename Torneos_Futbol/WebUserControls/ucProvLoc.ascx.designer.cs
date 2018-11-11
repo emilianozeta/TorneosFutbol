@@ -22,6 +22,15 @@ namespace Torneos_Futbol.WebUserControls {
         protected global::System.Web.UI.WebControls.DropDownList ddlProvincia;
         
         /// <summary>
+        /// Control cvProvincia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator cvProvincia;
+        
+        /// <summary>
         /// Control ddlLocalidad.
         /// </summary>
         /// <remarks>
@@ -29,5 +38,14 @@ namespace Torneos_Futbol.WebUserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlLocalidad;
+        
+        /// <summary>
+        /// Control cvLocalidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator cvLocalidad;
     }
 }

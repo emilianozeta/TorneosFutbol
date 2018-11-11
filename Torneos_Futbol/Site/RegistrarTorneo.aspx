@@ -31,6 +31,10 @@
                                     <label>Nombre</label>
                                     <asp:TextBox ID="txtNombre" runat="server" class="form-control"/>
                                 </div>
+                                <div class="form-group">
+                                    <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="El nombre es obligatorio" ControlToValidate="txtNombre" Display ="Dynamic" CssClass="label label-danger"></asp:RequiredFieldValidator>
+					                <asp:RegularExpressionValidator ValidationExpression="^.{1,50}$" ID="longTxtNombre" runat="server" ErrorMessage="El nombre no puede superar los 50 caracteres" ControlToValidate="txtNombre" Display ="Dynamic" CssClass="label label-danger"></asp:RegularExpressionValidator>
+                                </div>
 
                                 <uc1:ucProvLoc runat="server" ID="ucProvLoc" />
 
@@ -41,6 +45,7 @@
 							            <asp:ListItem Text ="Activo" Value= "False" > Inactivo</asp:ListItem>
 						            </asp:RadioButtonList>
                                 </div>
+
                                 <br />
                                 <asp:Button ID="btnCrearTorneo" runat="server" Text="Crear" class="btn btn-default" OnClick="btnCrearTorneo_Click"/>
 				            </div>

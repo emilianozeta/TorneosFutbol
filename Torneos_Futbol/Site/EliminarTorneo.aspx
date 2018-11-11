@@ -31,6 +31,9 @@
                                     <label>Torneo</label>
                                     <asp:DropDownList ID="ddlTorneo" runat="server" class="form-control"></asp:DropDownList>
                                 </div>
+                                <div class="form-group">
+                                    <asp:CompareValidator ID="cvTorneo" ControlToValidate="ddlTorneo" runat="server" ValueToCompare="0" Operator="NotEqual" Display ="Dynamic" ErrorMessage="Debe seleccionar un torneo" CssClass="label label-danger"></asp:CompareValidator>
+                                </div>
 			                    <br />
                                 <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" class="btn btn-default" OnClientClick="return confirm('¿Esta seguro que desea eliminar este torneo?');return false;" OnClick="btnEliminar_Click"/>
 	                        </div>

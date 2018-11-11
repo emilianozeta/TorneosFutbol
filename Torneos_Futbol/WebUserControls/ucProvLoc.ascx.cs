@@ -49,8 +49,6 @@ namespace Torneos_Futbol.WebUserControls
 
             var loc = (from l in base_futbol.localidad where l.provincia_id == id_prov select l).ToList();
 
-            //ddlLocalidad.Items.Insert(0, new ListItem("Seleccione una localidad...", "0"));
-
             foreach (localidad l in loc)
             {
                 ListItem item = new ListItem(l.descripcion, funCom.IntToString(l.id));
@@ -64,20 +62,7 @@ namespace Torneos_Futbol.WebUserControls
 
         private void CargarLocalidad()
         {
-            //ddlLocalidad.Items.Clear();
-
-            //var loc = base_futbol.localidad.ToList();
-
             ddlLocalidad.Items.Insert(0, new ListItem("Seleccione una localidad...", "0"));
-
-            //foreach (localidad l in loc)
-            //{
-            //    ListItem item = new ListItem(l.descripcion, funCom.IntToString(l.id));
-
-            //    ddlLocalidad.Items.Add(item);
-            //}
-
-            //ddlLocalidad.SelectedIndex = 0;
         }
 
         protected void ddlProvincia_SelectedIndexChanged(object sender, EventArgs e)

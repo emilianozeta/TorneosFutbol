@@ -17,6 +17,11 @@ namespace Torneos_Futbol.Pages.Equipos
 
         protected void Page_Load(object sender, EventArgs e)
         {
+           
+        }
+
+        protected void btnEnviar_Click(object sender, EventArgs e)
+        {
             Page.Validate();
 
             if (Page.IsValid)
@@ -25,8 +30,8 @@ namespace Torneos_Futbol.Pages.Equipos
                 {
                     contacto co = new contacto();
 
-                    co.nombre     = txtNombre.Text;
-                    co.email      = txtMail.Text;
+                    co.nombre = txtNombre.Text;
+                    co.email = txtMail.Text;
                     co.comentario = txtComentario.Text;
 
                     base_futbol.contacto.Add(co);
