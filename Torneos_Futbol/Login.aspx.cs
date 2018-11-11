@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Datos;
 using Torneos_Futbol.Funciones_Comunes;
+using Torneos_Futbol.Negocio;
 
 namespace SiCoVe
 {
@@ -14,6 +15,7 @@ namespace SiCoVe
     {
         futbolEntities base_futbol = new futbolEntities();
         usuario        usu         = new usuario();
+        ClassLogin     funLog      = new ClassLogin();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -47,7 +49,7 @@ namespace SiCoVe
                 string usuario  = txtUsuario.Text;
                 string password = txtPassword.Text;
 
-                var user = (from u in base_futbol.usuario where u.contraseña == password && u.usuario1 == usuario select u).FirstOrDefault();
+                var user = funLog.Recuperar_Usuario(base_futbol, password, usuario);
 
                 if (user != null)
                 {

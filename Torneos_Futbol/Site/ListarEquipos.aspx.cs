@@ -14,6 +14,7 @@ namespace Torneos_Futbol.Pages.Equipos
     {
         futbolEntities   base_futbol = new futbolEntities();
         FuncionesComunes funCom      = new FuncionesComunes();
+        ClassListado     funList     = new ClassListado();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,12 +26,7 @@ namespace Torneos_Futbol.Pages.Equipos
 
         private void CargarLista()
         {
-            var busqueda = (from eq in base_futbol.equipo
-                            join t in base_futbol.torneo on eq.torneo_id equals t.id into equi
-                            from equiLeft in equi.DefaultIfEmpty()
-                            orderby eq.nombre
-                            select new { Equipos = eq.nombre, Torneos = equiLeft.nombre, Estado = equiLeft.flag_activo ? "Activo" : "Inactivo" }
-                            ).ToList();
+            var busqueda = funList.Listar_Equipo(base_futbol);
 
             dgvListado.DataSource = busqueda;
             dgvListado.DataBind();
@@ -46,23 +42,11 @@ namespace Torneos_Futbol.Pages.Equipos
 
             if (activos)
             {
-                busqueda = (from eq in base_futbol.equipo
-                            join t in base_futbol.torneo on eq.torneo_id equals t.id into equi
-                            from equiLeft in equi.DefaultIfEmpty()
-                            where(eq.nombre.Contains(equipoB) && (equiLeft.flag_activo.Equals(activos)) /*&& equiLeft.nombre.Contains(torneoB)*/)
-                            orderby eq.nombre
-                            select new { Equipos = eq.nombre, Torneos = equiLeft.nombre, Estado = equiLeft.flag_activo ? "Activo" : "Inactivo" }
-                            ).ToList();
+                busqueda = funList.Listar_Equipo_Busqueda(base_futbol, torneoB, equipoB, activos);
             }
             else
             {
-                busqueda = (from eq in base_futbol.equipo
-                            join t in base_futbol.torneo on eq.torneo_id equals t.id into equi
-                            from equiLeft in equi.DefaultIfEmpty()
-                            where (eq.nombre.Contains(equipoB) /*&& equiLeft.nombre.Contains(torneoB)*/)
-                            orderby eq.nombre
-                            select new { Equipos = eq.nombre, Torneos = equiLeft.nombre, Estado = equiLeft.flag_activo ? "Activo" : "Inactivo" }
-                            ).ToList();
+                busqueda = funList.Listar_Equipo_Busqueda_Act(base_futbol, torneoB, equipoB);
             }
 
             dgvListado.DataSource = busqueda;
