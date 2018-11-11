@@ -1,8 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Index.master.cs" Inherits="Torneos_Futbol.Index" %>
 
-<%@ Register Src="~/WebUserControls/ucFooter.ascx" TagPrefix="uc1" TagName="ucFooter" %>
-
-
 <!DOCTYPE html>
 
 <html>
@@ -106,7 +103,16 @@
                 <%-- Contenido --%>
             </div>
              <div class="text-center">
-                 <uc1:ucFooter runat="server" ID="ucFooter" />
+                 <div class="form-group">
+                    <br />
+                    <label>
+                        Universidad Nacional de La Matanza. - Dpto. de Formación Contínua.
+                        <br />
+                        Licenciatura en Gestión de la Tecnología - Programación Avanzada II
+                        <br />
+                        Integrantes: Klodi, Silvia - Fernandez, Jonathan - Zambrano, Emiliano - Sobrile, Juan
+                    </label>
+                </div>
             </div>
         </form>
         <asp:ContentPlaceHolder ID="includeJsSection" runat="server"></asp:ContentPlaceHolder>

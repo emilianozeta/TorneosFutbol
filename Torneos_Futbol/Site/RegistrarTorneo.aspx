@@ -1,4 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Index.Master" AutoEventWireup="true" CodeBehind="RegistrarTorneo.aspx.cs" Inherits="Torneos_Futbol.Pages.Administracion.RegistrarTorneo" %>
+
+<%@ Register Src="~/WebUserControls/ucProvLoc.ascx" TagPrefix="uc1" TagName="ucProvLoc" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="IncludeCssSection" runat="server">
 </asp:Content>
 
@@ -28,14 +31,8 @@
                                     <label>Nombre</label>
                                     <asp:TextBox ID="txtNombre" runat="server" class="form-control"/>
                                 </div>
-                                <div class="form-group">
-                                    <label>Provincia</label>
-                                    <asp:DropDownList ID="ddlProvincia" runat="server" class="form-control"></asp:DropDownList>
-                                </div>
-                                <div class="form-group">
-                                    <label>Localidad</label>
-                                    <asp:DropDownList ID="ddlLocalidad" runat="server" class="form-control"></asp:DropDownList>
-                                </div>
+
+                                <uc1:ucProvLoc runat="server" ID="ucProvLoc" />
 
                                 <div class="form-group">
                                     <label>Estado</label>

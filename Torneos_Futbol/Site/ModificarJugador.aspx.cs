@@ -14,20 +14,26 @@ namespace Torneos_Futbol.Pages.Administracion
     {
         futbolEntities   base_futbol = new futbolEntities();
         FuncionesComunes funCom      = new FuncionesComunes();
+        ClassJugador     funJug      = new ClassJugador();
+        ClassEquipo      funEqui     = new ClassEquipo();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            divModificar.Visible = false;
-
             if (!Page.IsPostBack)
             {
+                divModificar.Visible = false;
                 CargarJugador();
+            }
+            else
+            {
+                divBuscar.Visible = false;
+                divModificar.Visible = true;
             }
         }
 
         private void CargarJugador()
         {
-            var jug = base_futbol.jugador.ToList();
+            var jug = funJug.Recuperar_Jugador_Completo(base_futbol);
 
             ddlJugador.Items.Insert(0, new ListItem("Seleccione un Jugador...", "0"));
 
@@ -42,39 +48,34 @@ namespace Torneos_Futbol.Pages.Administracion
 
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
-            int seljugador  = funCom.StringToInt(ddlJugador.SelectedItem.Value);
-            var seljugador2 = ddlJugador.SelectedItem.Text;
+            int selJugador  = funCom.StringToInt(ddlJugador.SelectedItem.Value);
 
-            divBuscar.Visible    = false;
-            divModificar.Visible = true;
-
-            var elijugador = (from j in base_futbol.jugador
-                              where j.id == seljugador
-                              select j).First();
+            jugador elijugador = funJug.Recuperar_Jugador_Busqueda(base_futbol, selJugador);
 
             txtNombre.Text   = elijugador.nombre;
             txtApellido.Text = elijugador.apellido;
 
-            var gener= base_futbol.genero.ToList();
+            var gener = funJug.Recuperar_Genero(base_futbol);
 
             foreach (genero ge in gener)
             {
                 ListItem item = new ListItem(ge.descripcion, funCom.IntToString(ge.id));
                 ddlSexo.Items.Add(item);
 
-                if (funCom.IntToString(ge.id) == elijugador.genero_id.ToString())
+                if (funCom.IntToString(ge.id) == funCom.IntToString(elijugador.genero_id))
                     item.Selected = true;
             }
 
-            txtEdad.Text = elijugador.edad.ToString();
+            txtEdad.Text = funCom.IntToString(elijugador.edad);
 
-            CargarProvincia(elijugador.provincia, elijugador.localidad);
+            ucProvLoc.DdlProvincia.SelectedIndex = elijugador.provincia.id;
+            ucProvLoc.CargarLocalidadMod(elijugador.localidad);
 
-            txtDireccion.Text = elijugador.domicilio.ToString();
+            txtDireccion.Text = elijugador.domicilio;
 
-            txtMail.Text = elijugador.email.ToString();
+            txtMail.Text = elijugador.email;
 
-            var equi = base_futbol.equipo.ToList();
+            var equi = funEqui.Recuperar_Equipo_Completo(base_futbol);
 
             foreach (equipo eq in equi)
             {
@@ -88,64 +89,6 @@ namespace Torneos_Futbol.Pages.Administracion
             txtFecNacimiento.Text = elijugador.fecha_nac.ToString("dd/M/yyyy");
         }
 
-        protected void ddlProvincia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int selJugador = funCom.StringToInt(ddlJugador.SelectedItem.Value);
-
-            divBuscar.Visible    = false;
-            divModificar.Visible = true;
-
-            var eliJugador = (from t in base_futbol.jugador
-                             where t.id == selJugador
-                             select t).First();
-
-            CargarLocalidad(eliJugador.localidad);
-        }
-
-        private void CargarProvincia(provincia provi, localidad loc)
-        {
-            ddlProvincia.Items.Clear();
-
-            var prov = base_futbol.provincia.ToList();
-
-            ddlProvincia.Items.Insert(0, new ListItem("Seleccione una provincia...", "0"));
-
-            foreach (provincia p in prov)
-            {
-                ListItem item = new ListItem(p.descripcion, funCom.IntToString(p.id));
-
-                ddlProvincia.Items.Add(item);
-
-                if (p == provi)
-                    item.Selected = true;
-            }
-
-            //ddlProvincia.SelectedIndex = 0;
-
-            CargarLocalidad(loc);
-        }
-
-        private void CargarLocalidad(localidad local)
-        {
-            ddlLocalidad.Items.Clear();
-
-            int id_prov = Convert.ToInt16(ddlProvincia.SelectedValue);
-
-            var loc = (from l in base_futbol.localidad where l.provincia_id == id_prov select l).ToList();
-
-            ddlLocalidad.Items.Insert(0, new ListItem("Seleccione una localidad...", "0"));
-
-            foreach (localidad l in loc)
-            {
-                ListItem item = new ListItem(l.descripcion, funCom.IntToString(l.id));
-
-                ddlLocalidad.Items.Add(item);
-
-                if (l == local)
-                    item.Selected = true;
-            }
-        }
-
         protected void btnModifJugador_Click(object sender, EventArgs e)
         {
             Page.Validate();
@@ -156,15 +99,14 @@ namespace Torneos_Futbol.Pages.Administracion
                 {
                     int selJugador = funCom.StringToInt(ddlJugador.SelectedItem.Value);
 
-                    ClassJugador funJug = new ClassJugador();
-                    jugador      jug    = (from ju in base_futbol.jugador where ju.id == selJugador select ju).FirstOrDefault();
+                    jugador jug      = (from ju in base_futbol.jugador where ju.id == selJugador select ju).FirstOrDefault();
 
                     jug.nombre       = txtNombre.Text;
                     jug.apellido     = txtApellido.Text;
                     jug.email        = txtMail.Text;
                     jug.fecha_nac    = funCom.StringToDateTime(txtFecNacimiento.Text);
-                    jug.provincia_id = funCom.StringToInt(ddlProvincia.SelectedValue);
-                    jug.localidad_id = funCom.StringToInt(ddlLocalidad.SelectedValue);
+                    jug.provincia_id = funCom.StringToInt(ucProvLoc.DdlProvincia.SelectedValue);
+                    jug.localidad_id = funCom.StringToInt(ucProvLoc.DdlLocalidad.SelectedValue);
                     jug.domicilio    = txtDireccion.Text;
                     jug.genero_id    = funCom.StringToInt(ddlSexo.SelectedValue);
                     jug.equipo_id    = funCom.StringToInt(ddlEquipo.SelectedValue);
@@ -172,9 +114,7 @@ namespace Torneos_Futbol.Pages.Administracion
 
                     funJug.Actualizar_Jugador(base_futbol);
 
-                    //base_futbol.SaveChanges();
-
-                    divBuscar.Visible = false;
+                    divBuscar.Visible    = false;
                     divModificar.Visible = true;
 
                     //lblTorModificado.Text = "Torneo modificado exitosamente";

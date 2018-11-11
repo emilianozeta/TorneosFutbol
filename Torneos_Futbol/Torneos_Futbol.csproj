@@ -297,8 +297,7 @@
     <Content Include="Index.aspx" />
     <Content Include="Index.Master" />
     <Content Include="Login.aspx" />
-    <Content Include="ucTorneo.ascx" />
-    <Content Include="WebUserControls\ucFooter.ascx" />
+    <Content Include="WebUserControls\ucProvLoc.ascx" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -454,13 +453,6 @@
     <Compile Include="Site\RegistrarTorneo.aspx.designer.cs">
       <DependentUpon>RegistrarTorneo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ucTorneo.ascx.cs">
-      <DependentUpon>ucTorneo.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ucTorneo.ascx.designer.cs">
-      <DependentUpon>ucTorneo.ascx</DependentUpon>
-    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -468,12 +460,12 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="WebUserControls\ucFooter.ascx.cs">
-      <DependentUpon>ucFooter.ascx</DependentUpon>
+    <Compile Include="WebUserControls\ucProvLoc.ascx.cs">
+      <DependentUpon>ucProvLoc.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebUserControls\ucFooter.ascx.designer.cs">
-      <DependentUpon>ucFooter.ascx</DependentUpon>
+    <Compile Include="WebUserControls\ucProvLoc.ascx.designer.cs">
+      <DependentUpon>ucProvLoc.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

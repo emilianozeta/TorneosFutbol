@@ -14,6 +14,7 @@ namespace Torneos_Futbol.Pages.Administracion
     {
         futbolEntities   base_futbol = new futbolEntities();
         FuncionesComunes funCom      = new FuncionesComunes();
+        ClassJugador     funJug      = new ClassJugador();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,7 +26,9 @@ namespace Torneos_Futbol.Pages.Administracion
 
         private void CargarJugador()
         {
-            var jug = base_futbol.jugador.ToList();
+            ddlJugador.Items.Clear();
+
+            var jug = funJug.Recuperar_Jugador_Completo(base_futbol);
 
             ddlJugador.Items.Insert(0, new ListItem("Seleccione un jugador...", "0"));
 
@@ -46,17 +49,13 @@ namespace Torneos_Futbol.Pages.Administracion
             {
                 if (ddlJugador.SelectedItem.Value != "0")
                 {
-                    ClassJugador funJu = new ClassJugador();
-
                     int seljugador = funCom.StringToInt(ddlJugador.SelectedItem.Value);
 
-                    var elijugador = (from j in base_futbol.jugador
-                                      where j.id == seljugador
-                                      select j).First();
+                    jugador elijugador = funJug.Recuperar_Jugador_Busqueda(base_futbol, seljugador);
 
-                    funJu.Eliminar_Jugador(base_futbol, elijugador);
+                    funJug.Eliminar_Jugador(base_futbol, elijugador);
 
-                    //CargarJugador();
+                    CargarJugador();
 
                     //lblJugEliminado.Text = "Se ha eliminado exitosamente el jugador: " + seljugador2;
                 }

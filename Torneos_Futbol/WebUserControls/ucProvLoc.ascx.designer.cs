@@ -7,19 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Torneos_Futbol {
+namespace Torneos_Futbol.WebUserControls {
     
     
-    public partial class ucTorneo {
-        
-        /// <summary>
-        /// Control txtNombre.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombre;
+    public partial class ucProvLoc {
         
         /// <summary>
         /// Control ddlProvincia.
@@ -38,14 +29,5 @@ namespace Torneos_Futbol {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlLocalidad;
-        
-        /// <summary>
-        /// Control radBtnLstEstado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList radBtnLstEstado;
     }
 }

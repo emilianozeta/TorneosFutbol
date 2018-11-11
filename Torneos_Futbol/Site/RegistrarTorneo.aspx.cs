@@ -14,46 +14,11 @@ namespace Torneos_Futbol.Pages.Administracion
     {
         futbolEntities   base_futbol = new futbolEntities();
         FuncionesComunes funCom      = new FuncionesComunes();
+        ClassTorneo      funTorn     = new ClassTorneo();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
-            {
-                CargarProvincia();
-                CargarLocalidad();
-            }
-        }
 
-        private void CargarProvincia()
-        {
-            var prov = base_futbol.provincia.ToList();
-            ListItem item;
-
-            ddlProvincia.Items.Insert(0, new ListItem("Seleccione una provincia...", "0"));
-
-            foreach (provincia p in prov)
-            {
-                item = new ListItem(p.descripcion, funCom.IntToString(p.id));
-                ddlProvincia.Items.Add(item);
-            }
-
-            ddlProvincia.SelectedIndex = 0;
-        }
-
-        private void CargarLocalidad()
-        {
-            var loc = base_futbol.localidad.ToList();
-            ListItem item;
-
-            ddlLocalidad.Items.Insert(0, new ListItem("Seleccione una localidad...", "0"));
-
-            foreach (localidad l in loc)
-            {
-                item = new ListItem(l.descripcion, funCom.IntToString(l.id));
-                ddlLocalidad.Items.Add(item);
-            }
-
-            ddlLocalidad.SelectedIndex = 0;
         }
 
         protected void btnCrearTorneo_Click(object sender, EventArgs e)
@@ -64,24 +29,23 @@ namespace Torneos_Futbol.Pages.Administracion
             {
                 try
                 {
-                    torneo      to    = new torneo();
-                    ClassTorneo funTo = new ClassTorneo();
+                    torneo tor = new torneo();
 
-                    to.nombre = txtNombre.Text;
+                    tor.nombre = txtNombre.Text;
 
                     if (radBtnLstEstado.SelectedValue == "True")
                     {
-                        to.flag_activo = true;
+                        tor.flag_activo = true;
                     }
                     else if (radBtnLstEstado.SelectedValue == "False")
                     {
-                        to.flag_activo = false;
+                        tor.flag_activo = false;
                     }
 
-                    to.provincia_id = funCom.StringToInt(ddlProvincia.SelectedValue);
-                    to.localidad_id = funCom.StringToInt(ddlLocalidad.SelectedValue);
+                    tor.provincia_id = funCom.StringToInt(ucProvLoc.DdlProvincia.SelectedValue);
+                    tor.localidad_id = funCom.StringToInt(ucProvLoc.DdlLocalidad.SelectedValue);
 
-                    funTo.Insertar_Torneo(base_futbol, to);
+                    funTorn.Insertar_Torneo(base_futbol, tor);
 
                     //lblTorCreado.Text = "Torneo registrado exitosamente";
                 }

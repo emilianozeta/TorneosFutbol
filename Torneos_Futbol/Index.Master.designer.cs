@@ -58,15 +58,6 @@ namespace Torneos_Futbol {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder PaginaCentral_ContentPlaceHolder;
         
         /// <summary>
-        /// Control ucFooter.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Torneos_Futbol.WebUserControls.ucFooter ucFooter;
-        
-        /// <summary>
         /// Control includeJsSection.
         /// </summary>
         /// <remarks>

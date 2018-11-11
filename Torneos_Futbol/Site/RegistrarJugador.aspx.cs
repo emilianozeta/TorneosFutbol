@@ -14,6 +14,8 @@ namespace Torneos_Futbol.Pages.Administracion
     {
         futbolEntities   base_futbol = new futbolEntities();
         FuncionesComunes funCom      = new FuncionesComunes();
+        ClassEquipo      funEqui     = new ClassEquipo();
+        ClassJugador     funJug      = new ClassJugador();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,21 +23,18 @@ namespace Torneos_Futbol.Pages.Administracion
             {
                 CargarEquipo();
                 CargarGenero();
-                CargarProvincia();
-                CargarLocalidad();
             }
         }
 
         private void CargarEquipo()
         {
-            var      equi = base_futbol.equipo.ToList();
-            ListItem item;
+            var equi = funEqui.Recuperar_Equipo_Completo(base_futbol);
 
             ddlEquipo.Items.Insert(0, new ListItem("Seleccione un equipo...", "0"));
 
             foreach (equipo e in equi)
             {
-                item = new ListItem(e.nombre, funCom.IntToString(e.id));
+                ListItem item = new ListItem(e.nombre, funCom.IntToString(e.id));
                 ddlEquipo.Items.Add(item);
             }
 
@@ -44,50 +43,17 @@ namespace Torneos_Futbol.Pages.Administracion
 
         private void CargarGenero()
         {
-            var      gen = base_futbol.genero.ToList();
-            ListItem item;
+            var gen = funJug.Recuperar_Genero(base_futbol);
 
             ddlSexo.Items.Insert(0, new ListItem("Seleccione un genero...", "0"));
 
             foreach (genero g in gen)
             {
-                item = new ListItem(g.descripcion, funCom.IntToString(g.id));
+                ListItem item = new ListItem(g.descripcion, funCom.IntToString(g.id));
                 ddlSexo.Items.Add(item);
             }
 
             ddlSexo.SelectedIndex = 0;
-        }
-
-        private void CargarProvincia()
-        {
-            var      prov = base_futbol.provincia.ToList();
-            ListItem item;
-
-            ddlProvincia.Items.Insert(0, new ListItem("Seleccione una provincia...", "0"));
-
-            foreach (provincia p in prov)
-            {
-                item = new ListItem(p.descripcion, funCom.IntToString(p.id));
-                ddlProvincia.Items.Add(item);
-            }
-
-            ddlProvincia.SelectedIndex = 0;
-        }
-
-        private void CargarLocalidad()
-        {
-            var      loc = base_futbol.localidad.ToList();
-            ListItem item;
-
-            ddlLocalidad.Items.Insert(0, new ListItem("Seleccione una localidad...", "0"));
-
-            foreach (localidad l in loc)
-            {
-                item = new ListItem(l.descripcion, funCom.IntToString(l.id));
-                ddlLocalidad.Items.Add(item);
-            }
-
-            ddlLocalidad.SelectedIndex = 0;
         }
 
         protected void btnCrearJugador_Click(object sender, EventArgs e)
@@ -98,15 +64,14 @@ namespace Torneos_Futbol.Pages.Administracion
             {
                 try
                 {
-                    jugador      ju     = new jugador();
-                    ClassJugador funJug = new ClassJugador();
-
+                    jugador ju      = new jugador();
+                   
                     ju.nombre       = txtNombre.Text;
                     ju.apellido     = txtApellido.Text;
                     ju.email        = txtMail.Text;
                     ju.fecha_nac    = funCom.StringToDateTime(txtFecNacimiento.Text);
-                    ju.provincia_id = funCom.StringToInt(ddlProvincia.SelectedValue);
-                    ju.localidad_id = funCom.StringToInt(ddlLocalidad.SelectedValue);
+                    ju.provincia_id = funCom.StringToInt(ucProvLoc.DdlProvincia.SelectedValue);
+                    ju.localidad_id = funCom.StringToInt(ucProvLoc.DdlLocalidad.SelectedValue);
                     ju.domicilio    = txtDireccion.Text;
                     ju.genero_id    = funCom.StringToInt(ddlSexo.SelectedValue);
                     ju.equipo_id    = funCom.StringToInt(ddlEquipo.SelectedValue);

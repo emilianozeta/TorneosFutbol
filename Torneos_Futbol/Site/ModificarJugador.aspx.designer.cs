@@ -58,6 +58,15 @@ namespace Torneos_Futbol.Pages.Administracion {
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
         
         /// <summary>
+        /// Control txtApellido.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtApellido;
+        
+        /// <summary>
         /// Control ddlSexo.
         /// </summary>
         /// <remarks>
@@ -67,49 +76,13 @@ namespace Torneos_Futbol.Pages.Administracion {
         protected global::System.Web.UI.WebControls.DropDownList ddlSexo;
         
         /// <summary>
-        /// Control ddlProvincia.
+        /// Control txtFecNacimiento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProvincia;
-        
-        /// <summary>
-        /// Control txtDireccion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDireccion;
-        
-        /// <summary>
-        /// Control ddlEquipo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEquipo;
-        
-        /// <summary>
-        /// Control btnModifJugador.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnModifJugador;
-        
-        /// <summary>
-        /// Control txtApellido.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtApellido;
+        protected global::System.Web.UI.WebControls.TextBox txtFecNacimiento;
         
         /// <summary>
         /// Control txtEdad.
@@ -121,40 +94,40 @@ namespace Torneos_Futbol.Pages.Administracion {
         protected global::System.Web.UI.WebControls.TextBox txtEdad;
         
         /// <summary>
-        /// Control RequiredFieldValidator1.
+        /// Control btnModifJugador.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.Button btnModifJugador;
         
         /// <summary>
-        /// Control CompareValidator1.
+        /// Control ValidationSummary1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator CompareValidator1;
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
         
         /// <summary>
-        /// Control RangeValidator1.
+        /// Control ucProvLoc.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator1;
+        protected global::Torneos_Futbol.WebUserControls.ucProvLoc ucProvLoc;
         
         /// <summary>
-        /// Control ddlLocalidad.
+        /// Control txtDireccion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlLocalidad;
+        protected global::System.Web.UI.WebControls.TextBox txtDireccion;
         
         /// <summary>
         /// Control txtMail.
@@ -166,12 +139,12 @@ namespace Torneos_Futbol.Pages.Administracion {
         protected global::System.Web.UI.WebControls.TextBox txtMail;
         
         /// <summary>
-        /// Control txtFecNacimiento.
+        /// Control ddlEquipo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFecNacimiento;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEquipo;
     }
 }

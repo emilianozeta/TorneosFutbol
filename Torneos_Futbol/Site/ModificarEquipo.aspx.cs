@@ -14,20 +14,26 @@ namespace Torneos_Futbol.Pages.Administracion
     {
         futbolEntities   base_futbol = new futbolEntities();
         FuncionesComunes funCom      = new FuncionesComunes();
+        ClassEquipo      funEquip    = new ClassEquipo();
+        ClassTorneo      funTonr     = new ClassTorneo();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            divModificar.Visible = false;
-
             if (!IsPostBack)
             {
+                divModificar.Visible = false;
                 CargarEquipo();
+            }
+            else
+            {
+                divBuscar.Visible = false;
+                divModificar.Visible = true;
             }
         }
 
         private void CargarEquipo()
         {
-            var equi = base_futbol.equipo.ToList();
+            var equi = funEquip.Recuperar_Equipo_Completo(base_futbol);
 
             ddlEquipo.Items.Insert(0, new ListItem("Seleccione un equipo...", "0"));
 
@@ -43,19 +49,13 @@ namespace Torneos_Futbol.Pages.Administracion
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
             int selequipo  = funCom.StringToInt(ddlEquipo.SelectedItem.Value);
-            var selequipo2 = ddlEquipo.SelectedItem.Text;
 
-            divBuscar.Visible    = false;
-            divModificar.Visible = true;
-
-            var eliequipo = (from eq in base_futbol.equipo
-                             where eq.id == selequipo
-                             select eq).First();
+            equipo eliequipo = funEquip.Recuperar_Equipo_Busqueda(base_futbol, selequipo);
 
             txtNombre.Text = eliequipo.nombre;
             txtMonto.Text  = eliequipo.montoabonado.ToString();
 
-            var tor = base_futbol.torneo.ToList();
+            var tor = funTonr.Recuperar_Torneo_Completo(base_futbol);
 
             foreach (torneo to in tor)
             {
@@ -77,14 +77,13 @@ namespace Torneos_Futbol.Pages.Administracion
                 {
                     int selequipo = funCom.StringToInt(ddlEquipo.SelectedItem.Value);
 
-                    ClassEquipo funEqui = new ClassEquipo();
-                    equipo      equi    = (from eq in base_futbol.equipo where eq.id == selequipo select eq).FirstOrDefault();
+                    equipo equi       = (from eq in base_futbol.equipo where eq.id == selequipo select eq).FirstOrDefault();
 
                     equi.nombre       = txtNombre.Text;
                     equi.montoabonado = funCom.StringToInt(txtMonto.Text);
                     equi.torneo_id    = funCom.StringToInt(ddlTorneo.SelectedValue);
 
-                    funEqui.Actualizar_Equipo(base_futbol);
+                    funEquip.Actualizar_Equipo(base_futbol);
 
                     divBuscar.Visible    = false;
                     divModificar.Visible = true;

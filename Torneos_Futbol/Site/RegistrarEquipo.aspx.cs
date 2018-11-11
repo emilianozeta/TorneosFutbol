@@ -14,6 +14,8 @@ namespace Torneos_Futbol.Pages.Administracion
     {
         futbolEntities   base_futbol = new futbolEntities();
         FuncionesComunes funCom      = new FuncionesComunes();
+        ClassEquipo      funEqui     = new ClassEquipo();
+        ClassTorneo      funTorn     = new ClassTorneo();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,7 +27,7 @@ namespace Torneos_Futbol.Pages.Administracion
 
         private void CargarTorneo()
         {
-            var torn = base_futbol.torneo.ToList();
+            var torn = funTorn.Recuperar_Torneo_Completo(base_futbol);
 
             ddlTorneo.Items.Insert(0, new ListItem("Seleccione un Torneo...", "0"));
 
@@ -46,14 +48,13 @@ namespace Torneos_Futbol.Pages.Administracion
             {
                 try
                 {
-                    equipo      eq    = new equipo();
-                    ClassEquipo funEq = new ClassEquipo();
+                    equipo eq       = new equipo();
 
                     eq.nombre       = txtNombre.Text;
                     eq.montoabonado = funCom.StringToInt(txtMonto.Text);
                     eq.torneo_id    = funCom.StringToInt(ddlTorneo.SelectedValue);
 
-                    funEq.Insertar_Equipo(base_futbol, eq);
+                    funEqui.Insertar_Equipo(base_futbol, eq);
 
                     //lblJugCreado.Text = "Jugador registrado exitosamente";
                 }

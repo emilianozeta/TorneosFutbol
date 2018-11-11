@@ -12,8 +12,10 @@ namespace Torneos_Futbol.Pages.Administracion
 {
     public partial class EliminarEquipo : System.Web.UI.Page
     {
-        futbolEntities base_futbol = new futbolEntities();
-        FuncionesComunes funCom    = new FuncionesComunes();
+        futbolEntities   base_futbol = new futbolEntities();
+        FuncionesComunes funCom      = new FuncionesComunes();
+        ClassEquipo      funEqui     = new ClassEquipo();
+        ClassJugador     funJug      = new ClassJugador();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,7 +27,9 @@ namespace Torneos_Futbol.Pages.Administracion
 
         private void CargarEquipo()
         {
-            var equi = base_futbol.equipo.ToList();
+            ddlEquipo.Items.Clear();
+
+            var equi = funEqui.Recuperar_Equipo_Completo(base_futbol);
 
             ddlEquipo.Items.Insert(0, new ListItem("Seleccione un equipo...", "0"));
 
@@ -46,28 +50,21 @@ namespace Torneos_Futbol.Pages.Administracion
             {
                 if (ddlEquipo.SelectedItem.Value != "0")
                 {
-                    ClassEquipo  funEq = new ClassEquipo();
-                    ClassJugador funJu = new ClassJugador();
-
                     int selequipo = funCom.StringToInt(ddlEquipo.SelectedItem.Value);
 
-                    var eliequipo = (from eq in base_futbol.equipo
-                                     where eq.id == selequipo
-                                     select eq).First();
+                    equipo eliequipo = funEqui.Recuperar_Equipo_Busqueda(base_futbol, selequipo);
 
                     //Levanto todos los jugadores asociados al equipo, y los elimino
-                    var query = from ju in base_futbol.jugador
-                                where ju.equipo_id == selequipo
-                                select ju;
+                    var selJugador = funEqui.Recuperar_Equipo_Jugador(base_futbol, selequipo);
 
-                    foreach (var ju in query)
+                    foreach (var ju in selJugador)
                     {
-                        funJu.Eliminar_JugadorEquipo(base_futbol, ju);
+                        funJug.Eliminar_JugadorEquipo(base_futbol, ju);
                     }
 
-                    funEq.Eliminar_Equipo(base_futbol, eliequipo);
+                    funEqui.Eliminar_Equipo(base_futbol, eliequipo);
 
-                    //CargarEquipo();
+                    CargarEquipo();
 
                     //lblJugEliminado.Text = "Se ha eliminado exitosamente el jugador: " + seljugador2;
                 }
