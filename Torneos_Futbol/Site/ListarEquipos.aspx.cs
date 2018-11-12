@@ -24,38 +24,51 @@ namespace Torneos_Futbol.Pages.Equipos
             }
         }
 
+        //private void CargarLista()
+        //{
+        //    string torneoB = txtTorneoB.Text;
+        //    string equipoB = txtEquipoB.Text;
+        //    bool activos = chkActivos.Checked;
+
+        //    var busqueda = (dynamic)null;
+        //    busqueda = funList.Listar_Equipo_Busqueda(base_futbol, torneoB, equipoB, activos);
+
+        //    dgvListado.DataSource = busqueda;
+        //    dgvListado.DataBind();
+        //}
+
+        //protected void btnBuscarB_Click(object sender, EventArgs e)
+        //{
+        //    CargarLista();
+        //}
+
         private void CargarLista()
         {
-            string torneoB = txtTorneoB.Text;
-            string equipoB = txtEquipoB.Text;
-            bool activos = chkActivos.Checked;
-
-            var busqueda = (dynamic)null;
-            busqueda = funList.Listar_Equipo_Busqueda(base_futbol, torneoB, equipoB, activos);
+            var busqueda = funList.Listar_Equipo(base_futbol);
 
             dgvListado.DataSource = busqueda;
             dgvListado.DataBind();
-
-            //var busqueda = funList.Listar_Equipo(base_futbol);
-
-            //dgvListado.DataSource = busqueda;
-            //dgvListado.DataBind();
         }
 
         protected void btnBuscarB_Click(object sender, EventArgs e)
         {
+            //string torneoB = txtTorneoB.Text;
+            string equipoB = txtEquipoB.Text;
+            bool activos = chkActivos.Checked;
 
-            CargarLista();
-            //if (activos)
-            //{
-            //    busqueda = funList.Listar_Equipo_Busqueda(base_futbol, torneoB, equipoB, activos);
-            //}
-            //else
-            //{
-            //    busqueda = funList.Listar_Equipo_Busqueda_Act(base_futbol, torneoB, equipoB);
-            //}
+            var busqueda = (dynamic)null;
 
+            if (activos)
+            {
+                busqueda = funList.Listar_Equipo_Busqueda(base_futbol, /*torneoB,*/ equipoB, activos);
+            }
+            else
+            {
+                busqueda = funList.Listar_Equipo_Busqueda_Act(base_futbol, /*torneoB,*/ equipoB);
+            }
 
+            dgvListado.DataSource = busqueda;
+            dgvListado.DataBind();
         }
     }
 }

@@ -34,8 +34,8 @@
                             </div>
                             <div class="col-lg-2">
                                 <div class="form-group">
-                                    <label>Nombre Torneo</label>
-                                    <asp:TextBox class="form-control" ID="txtTorneoB" runat="server"></asp:TextBox>
+                                    <%--<label>Nombre Torneo</label>
+                                    <asp:TextBox class="form-control" ID="txtTorneoB" runat="server"></asp:TextBox>--%>
                                     <br />
                                     <asp:Button class="btn btn-outline btn-primary "  OnClick="btnBuscarB_Click" ID="btnBuscarB" runat="server" Text="Buscar" />
                                 </div>

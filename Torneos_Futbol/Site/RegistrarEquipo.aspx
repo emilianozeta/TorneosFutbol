@@ -36,9 +36,9 @@
                                     <label>Torneo</label>
                                     <asp:DropDownList ID="ddlTorneo" runat="server" class="form-control"></asp:DropDownList>
                                 </div>
-                                <div class="form-group">
+                                <%--<div class="form-group">
                                     <asp:CompareValidator ID="cvTorneo" ControlToValidate="ddlTorneo" runat="server" ValueToCompare="0" Operator="NotEqual" Display ="Dynamic" ErrorMessage="Debe seleccionar un torneo" CssClass="label label-danger"></asp:CompareValidator>
-                                </div>
+                                </div>--%>
                                 <div class="form-group">
                                     <label>Monto abonado</label>
                                     <asp:textbox id="txtMonto" runat="server" class="form-control" placeholder="Ingrese monto"></asp:textbox>

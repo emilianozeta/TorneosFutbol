@@ -81,7 +81,11 @@ namespace Torneos_Futbol.Pages.Administracion
 
                     equi.nombre       = txtNombre.Text;
                     equi.montoabonado = funCom.StringToInt(txtMonto.Text);
-                    equi.torneo_id    = funCom.StringToInt(ddlTorneo.SelectedValue);
+
+                    if (funCom.StringToInt(ddlTorneo.SelectedValue) == 0)
+                        equi.torneo_id = null;
+                    else
+                        equi.torneo_id = funCom.StringToInt(ddlTorneo.SelectedValue);
 
                     funEquip.Actualizar_Equipo(base_futbol);
 

@@ -52,7 +52,11 @@ namespace Torneos_Futbol.Pages.Administracion
 
                     eq.nombre       = txtNombre.Text;
                     eq.montoabonado = funCom.StringToInt(txtMonto.Text);
-                    eq.torneo_id    = funCom.StringToInt(ddlTorneo.SelectedValue);
+
+                    if (funCom.StringToInt(ddlTorneo.SelectedValue) == 0)
+                        eq.torneo_id = null;
+                    else
+                        eq.torneo_id    = funCom.StringToInt(ddlTorneo.SelectedValue);
 
                     funEqui.Insertar_Equipo(base_futbol, eq);
 
