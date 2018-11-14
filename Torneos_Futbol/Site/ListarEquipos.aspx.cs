@@ -24,24 +24,6 @@ namespace Torneos_Futbol.Pages.Equipos
             }
         }
 
-        //private void CargarLista()
-        //{
-        //    string torneoB = txtTorneoB.Text;
-        //    string equipoB = txtEquipoB.Text;
-        //    bool activos = chkActivos.Checked;
-
-        //    var busqueda = (dynamic)null;
-        //    busqueda = funList.Listar_Equipo_Busqueda(base_futbol, torneoB, equipoB, activos);
-
-        //    dgvListado.DataSource = busqueda;
-        //    dgvListado.DataBind();
-        //}
-
-        //protected void btnBuscarB_Click(object sender, EventArgs e)
-        //{
-        //    CargarLista();
-        //}
-
         private void CargarLista()
         {
             var busqueda = funList.Listar_Equipo(base_futbol);
@@ -52,7 +34,6 @@ namespace Torneos_Futbol.Pages.Equipos
 
         protected void btnBuscarB_Click(object sender, EventArgs e)
         {
-            //string torneoB = txtTorneoB.Text;
             string equipoB = txtEquipoB.Text;
             bool activos = chkActivos.Checked;
 
@@ -60,11 +41,11 @@ namespace Torneos_Futbol.Pages.Equipos
 
             if (activos)
             {
-                busqueda = funList.Listar_Equipo_Busqueda(base_futbol, /*torneoB,*/ equipoB, activos);
+                busqueda = funList.Listar_Equipo_Busqueda(base_futbol, equipoB, activos);
             }
             else
             {
-                busqueda = funList.Listar_Equipo_Busqueda_Act(base_futbol, /*torneoB,*/ equipoB);
+                busqueda = funList.Listar_Equipo_Busqueda_Act(base_futbol, equipoB);
             }
 
             dgvListado.DataSource = busqueda;
